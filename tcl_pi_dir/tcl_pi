@@ -1,0 +1,31 @@
+#!/usr/bin/env tclsh
+
+set tcl_precision 16
+
+set num_steps 100000
+
+puts "Calculating PI with:"
+puts "  $num_steps slices"
+puts "  1 process"
+
+set total_sum 0
+set step [ expr 1.0 / $num_steps ]
+
+set start [ clock microseconds ]
+
+for {set i 0} {$i < $num_steps} {incr i} {
+  set x [ expr ($i - 0.5) * $step ]
+  set total_sum [ expr $total_sum + (4.0 / (1.0 + ($x * $x))) ]
+}
+
+set stop [ clock microseconds ]
+
+set pi [ expr $total_sum * $step ]
+
+set time_diff [ expr ($stop - $start) / 1000000.0 ]
+
+set pi [ format "Obtained value of PI: %.16g" $pi ]
+puts "$pi"
+set time_diff [ format "Time taken: %.16g" $time_diff ]
+puts "$time_diff"
+

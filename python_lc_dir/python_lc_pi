@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+# Uses a list comprehension instead of a normal loop
+
+import time
+import sys
+
+num_steps = 1000*1000*10
+
+if len(sys.argv) > 1:
+  num_steps = int(sys.argv[1])
+
+print("Calculating PI with:\n  %d slices\n  1 process" % num_steps)
+
+total_sum = 0
+step = 1.0 / num_steps
+
+start = time.time()
+
+def slice_area(i):
+  x = (i-0.5)*step
+  return 4.0/(1.0+x*x)
+
+pi = step * sum([ slice_area(x) for x in xrange(num_steps) ])
+
+stop = time.time()
+
+print("Obtained value of PI: %.32g\n"
+      "Time taken: %g seconds"
+      % (pi, stop - start) )
+
+
+
+
