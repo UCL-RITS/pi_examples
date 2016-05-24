@@ -1,0 +1,47 @@
+#!/usr/bin/env ucblogo
+
+; This program calculates pi using Berkeley Logo. 
+
+; TODO - Berkeley Logo 5.5 (as from Xenial repos) doesn't support command line
+; arguments. Version 6.0 does.
+
+make "num_steps 1000000
+
+; There's got to be a neater way to do output of string + var than mixing 
+; print, type and escaped spaces but I've not found one in the sparse manual. 
+
+print [Calculating PI using]
+type [\ \ ] type num_steps print [\ slices]
+print [\ \ 1 process]
+
+; We need to use /bin/date to get the time as there doesn't seem to be a 
+; mechanism to do this in Berkeley Logo.  The format string +%s%N prints
+; UNIX time (seconds) followed by nanoseconds since then (9 fields).
+; (according to the manual).
+; Annoyingly, there isn't a millisecond option.
+
+make "start first first shell [date +%s%N]
+
+make "psum 0
+make "step 1/num_steps
+
+; Our main loop
+
+make "counter 1
+repeat :num_steps [
+  make "x (:counter - 0.5) * :step
+  make "psum :psum + (4.0/(1.0 +  (:x * :x) ) )
+  make "counter sum :counter 1 ]
+
+make "pi :psum * :step
+
+; Calculate time taken and convert from nanoseconds to seconds.
+
+make "finish first first shell [date +%s%N]
+make "runtime (finish - start) / 1000000000
+
+type [Obtained value of PI:\ ] print :pi
+type [Time taken:\ ] type runtime print [\ seconds]
+
+; Have to exit otherwise it returns us to Logo prompt.
+bye
