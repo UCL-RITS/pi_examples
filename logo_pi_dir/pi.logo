@@ -8,10 +8,10 @@
 make "num_steps 1000000
 
 ; There's got to be a neater way to do output of string + var than mixing 
-; print, type and escaped spaces but I've not found one in the sparse manual. 
+; print + chained sentences and escaped spaces. 
 
 print [Calculating PI using]
-type [\ \ ] type num_steps print [\ slices]
+print sentence sentence "\  :num_steps "slices
 print [\ \ 1 process]
 
 ; We need to use /bin/date to get the time as there doesn't seem to be a 
@@ -40,8 +40,8 @@ make "pi :psum * :step
 make "finish first first shell [date +%s%N]
 make "runtime (finish - start) / 1000000000
 
-type [Obtained value of PI:\ ] print :pi
-type [Time taken:\ ] type runtime print [\ seconds]
+print sentence "Obtained\ value\ of\ PI: :pi
+print sentence sentence "Time\ taken: :runtime "seconds
 
 ; Have to exit otherwise it returns us to Logo prompt.
 bye
