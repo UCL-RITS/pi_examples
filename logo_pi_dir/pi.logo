@@ -7,8 +7,8 @@
 
 make "num_steps 1000000
 
-; Enclosing some procedures like print in () allows them to take more than two
-; arguments!
+; Enclosing some procedures like print in () allows them to take more than 
+; the default one or two inputs!
 
 (print [Calculating PI using])
 (print [\ ] :num_steps [slices])
