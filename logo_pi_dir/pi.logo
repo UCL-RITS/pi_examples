@@ -7,12 +7,12 @@
 
 make "num_steps 1000000
 
-; There's got to be a neater way to do output of string + var than mixing 
-; print + chained sentences and escaped spaces. 
+; Enclosing some procedures like print in () allows them to take more than two
+; arguments!
 
-print [Calculating PI using]
-print sentence sentence "\  :num_steps "slices
-print [\ \ 1 process]
+(print [Calculating PI using])
+(print [\ ] :num_steps [slices])
+(print [\ \ 1 process])
 
 ; We need to use /bin/date to get the time as there doesn't seem to be a 
 ; mechanism to do this in Berkeley Logo.  The format string +%s%N prints
@@ -40,8 +40,8 @@ make "pi :psum * :step
 make "finish first first shell [date +%s%N]
 make "runtime (finish - start) / 1000000000
 
-print sentence "Obtained\ value\ of\ PI: :pi
-print sentence sentence "Time\ taken: :runtime "seconds
+(print [Obtained value of PI:] :pi)
+(print [Time taken:] :runtime [seconds])
 
 ; Have to exit otherwise it returns us to Logo prompt.
 bye
