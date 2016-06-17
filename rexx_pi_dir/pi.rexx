@@ -1,4 +1,7 @@
 #!/usr/bin/env rexx
+
+/* NOTE: for some REXX interpreters you will need to delete the shebang. */
+
 numsteps = 1000000
 
 if arg(1) \= "" then
@@ -8,7 +11,7 @@ end
 
 say "Calculating PI using: " numsteps " slices"
 
-/* Subsequent calls to time("E") give elapsed time */
+/* Subsequent calls to time("E") give elapsed time. */
 start = time("E")
 
 sum = 0.0
