@@ -1,0 +1,27 @@
+"/* vim: set filetype=vim : */
+
+let num_steps = 1000000
+
+let sum = 0
+let step = 1.0 / num_steps
+
+echo "Calculating PI using:"
+echo " " num_steps "slices"
+echo "  1 process"
+
+let start = strftime("%s")
+
+let i = 0
+while i < num_steps
+    let x    = (i - 0.5) * step
+    let sum += 4.0 / (1.0 + x*x)
+    let i += 1
+endwhile
+
+let pi = sum * step
+
+let stop = strftime("%s")
+
+let timing = stop - start
+echo "Obtained value for PI:" pi
+echo "  Time taken:" timing "seconds"
