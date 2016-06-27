@@ -1,11 +1,5 @@
 EXEC=calculate_pi
 
-CC=icc
-FC=ifort
-
-COPT=-O3 -xT 
-FOPT=-O3 -xT 
-
 SOURCES=$(wildcard *.c)
 OBJECTS=$(SOURCES:.c=.o)
 
