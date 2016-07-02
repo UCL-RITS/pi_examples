@@ -16,18 +16,13 @@ cat("  1 process\n")
 
 start <- Sys.time()
 
-slice <- 1.0/numslices
-
 # Define our function
 y <- function(x) {
   1/(1+(x^2))
 }
 
-# Generate array of points
-slices <- slice * 1:numslices
-
 # Sum our function applied to the slices.
-mypi <- (4 * sum(y(slices)))/numslices
+mypi <- (4 * sum(y((1.0/numslices) * 1:numslices)))/numslices
 
 stop <- Sys.time()
 elapsed <- stop - start
