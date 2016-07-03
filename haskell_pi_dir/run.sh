@@ -2,4 +2,4 @@
 
 make clean
 make
-./pi
+./pi +RTS -K1600000000 -RTS
