@@ -9,7 +9,8 @@ import System.CPUTime
 import GHC.Float
 
 -- Set up some functions
-y(x) = 1/(1+(x*x))
+y(x) = 1.0/(1.0+(x*x))
+calcpi(n) = (4.0/n) * sum (map y (map (/ n) [1.0..n]))
 
 -- Main function
 main = do
@@ -24,10 +25,7 @@ main = do
 
 -- Do our integration
   let n = float2Double(fromIntegral m)
-  let slice(x) = y(x)/n
-  let steps = map (/ n)[1..n]
-  let ssteps = map slice steps
-  let mypi = 4 * sum ssteps
+  let mypi = calcpi(n)
   putStrLn("Obtained value of PI: " ++ (show mypi))
 
 -- Note we have to time here
