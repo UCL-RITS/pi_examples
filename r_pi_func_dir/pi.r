@@ -11,7 +11,8 @@ if (length(args)>0) {
   numslices <- strtoi(args)
 }
 
-cat("Calculating PI using", numslices, "slices\n")
+cat("Calculating PI using:\n")
+cat(" ", numslices, "slices\n")
 cat("  1 process\n")
 
 start <- Sys.time()

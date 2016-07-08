@@ -8,7 +8,7 @@ if (length(args)>0) {
   numsteps <- strtoi(args)
 }
 
-cat("Calculating PI using", numsteps, "slices \n")
+cat("Calculating PI using:\n ", numsteps, "slices \n")
 cat("  1 process\n")
 
 start <- Sys.time()

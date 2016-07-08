@@ -15,7 +15,8 @@ Begin
   if ParamCount > 0 then
     numsteps := StrToInt64(ParamStr(1));
 
-  Writeln('Calculating PI using: ', numsteps, ' slices');
+  Writeln('Calculating PI using:');
+  Writeln('  ', numsteps, ' slices');
 
 { Initialise time counter and sum. Set step size. }
   start := TimeStampToMSecs(DateTimeToTimeStamp(Now)); 
