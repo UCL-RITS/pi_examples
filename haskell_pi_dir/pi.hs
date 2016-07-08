@@ -19,7 +19,7 @@ main = do
   argv <- getArgs
   let m = if (length argv >= 1) then read(head argv) :: Integer else 5000000
 
-  putStrLn("Calculating PI with " ++ (show m) ++ " slices")
+  putStrLn("Calculating PI using " ++ (show m) ++ " slices")
 
   start <- getCPUTime
 
