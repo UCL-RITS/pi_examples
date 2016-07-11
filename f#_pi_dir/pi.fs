@@ -1,7 +1,7 @@
 open System
 
 let y(x) = 1.0/(1.0+(x*x))
-let calcpi(n) = (4.0/n) * Seq.sum (Seq.map y ((seq { for i in 1.0..n -> i/n})))
+let calcpi(n) = (4.0/n) * Seq.sum (Seq.map y ((seq { for i in 0.5..(n-0.5) -> i/n})))
 
 [<EntryPoint>]
 let Main args =

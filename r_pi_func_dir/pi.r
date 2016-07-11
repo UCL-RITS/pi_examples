@@ -23,7 +23,7 @@ y <- function(x) {
 }
 
 # Sum our function applied to the slices.
-mypi <- (4 * sum(y((1.0/numslices) * 1:numslices)))/numslices
+mypi <- (4 * sum(y((1.0/numslices) * (0.5:numslices-0.5))))/numslices
 
 stop <- Sys.time()
 elapsed <- stop - start

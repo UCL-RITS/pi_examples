@@ -10,7 +10,7 @@ import GHC.Float
 
 -- Set up some functions
 y(x) = 1.0/(1.0+(x*x))
-calcpi(n) = (4.0/n) * sum (map y (map (/ n) [1.0..n]))
+calcpi(n) = (4.0/n) * sum (map y (map (/ n) [0.5..(n-0.5)]))
 
 -- Main function
 main = do
