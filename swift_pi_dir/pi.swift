@@ -1,3 +1,5 @@
+#!/usr/bin/env swift
+
 #if os(Linux) || os(FreeBSD)
 	import Glibc
 #else
