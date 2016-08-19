@@ -1,7 +1,8 @@
-// Note this is correct for Swift on Linux
-// You'll need to change this to import the correct library + write different
-// timing code on OS-X.
-import Glibc
+#if os(Linux) || os(FreeBSD)
+	import Glibc
+#else
+	import Darwin
+#endif
 
 var num_steps: Int = 1000000000
 
