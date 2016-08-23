@@ -20,7 +20,7 @@ int main( int argc, char **argv ) {
    step = 1.0 / num_steps;
 
    for (i=0;i<num_steps;i++) {
-      x    = (i - 0.5) * step;
+      x    = (i + 0.5) * step;
       sum += 4.0 / (1.0 + x*x);
    }
 
