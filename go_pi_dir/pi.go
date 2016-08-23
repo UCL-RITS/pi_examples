@@ -6,13 +6,30 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 	"time"
 )
 
 func main() {
 	var i int
 	var x float64
-	num_steps := 1000000000
+
+	var num_steps int
+	var err error
+
+	if len(os.Args) > 1 {
+		fmt.Println("beep")
+		num_steps, err = strconv.Atoi(os.Args[1])
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error parsing argument as step count: %s\n", err)
+			os.Exit(1)
+		}
+	} else {
+		fmt.Println("boop")
+		num_steps = 1000000000
+	}
+
 	fmt.Printf("Calculating PI using:\n  %v slices\n  1 process\n", num_steps)
 
 	var sum float64 = 0
