@@ -21,7 +21,7 @@ func main() {
 	var start time.Time = time.Now()
 
 	for i = 0; i < num_steps; i++ {
-		x = (float64(i) - 0.5) * step
+		x = (float64(i) + 0.5) * step
 		sum += 4.0 / (1.0 + x*x)
 	}
 
