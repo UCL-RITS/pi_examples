@@ -1,7 +1,13 @@
 
-local i=0
-local num_steps = 100000000
 
+local num_steps
+if arg[1] == nil then
+	num_steps = 100000000
+else
+	num_steps = arg[1]
+end
+
+local i=0
 local sum = 0.0
 local step = 1.0 / num_steps
 
