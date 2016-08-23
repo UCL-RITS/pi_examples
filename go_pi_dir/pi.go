@@ -19,14 +19,12 @@ func main() {
 	var err error
 
 	if len(os.Args) > 1 {
-		fmt.Println("beep")
 		num_steps, err = strconv.Atoi(os.Args[1])
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error parsing argument as step count: %s\n", err)
 			os.Exit(1)
 		}
 	} else {
-		fmt.Println("boop")
 		num_steps = 1000000000
 	}
 
