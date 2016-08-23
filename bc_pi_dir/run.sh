@@ -2,14 +2,21 @@
 
 date >/dev/null 2>/dev/null # warm file cache
 
-var_start=`date +%s.%N`
-var_stop=`date +%s.%N`
+var_start=$(date +%s.%N)
+var_stop=$(date +%s.%N)
 
-start=`date +%s.%N`
+if [ "${1:-}" != "" ]; then
+    num_steps="$1"
+else
+    num_steps=1000000
+fi
+
+
+start=$(date +%s.%N)
 bc -q <<EOF
 
 scale=32
-num_steps = 1000000
+num_steps = $num_steps
 
 print "Calculating PI with:\n  ", num_steps, " slices\n  1 process\n"
 
@@ -26,7 +33,9 @@ pi = total_sum * step
 print "Obtained value of PI: ", pi, "\n"
 
 EOF
-stop=`date +%s.%N`
+stop=$(date +%s.%N)
 
-echo "Time taken: `bc <<<\"scale=32;($stop - $start) - ($var_stop - $var_start)\"` seconds"
+time_taken=$(bc <<<"scale=32;($stop - $start) - ($var_stop - $var_start)")
+
+echo "Time taken: $time_taken seconds"
 
