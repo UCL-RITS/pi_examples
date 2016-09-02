@@ -14,7 +14,7 @@ set step [ expr 1.0 / $num_steps ]
 set start [ clock microseconds ]
 
 for {set i 0} {$i < $num_steps} {incr i} {
-  set x [ expr ($i - 0.5) * $step ]
+  set x [ expr ($i + 0.5) * $step ]
   set total_sum [ expr $total_sum + (4.0 / (1.0 + ($x * $x))) ]
 }
 
