@@ -3,6 +3,7 @@
 set tcl_precision 16
 
 set num_steps 100000
+if {$argc > 0} {set num_steps [lindex $argv 0]}
 
 puts "Calculating PI with:"
 puts "  $num_steps slices"
