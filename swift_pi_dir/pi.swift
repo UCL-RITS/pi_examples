@@ -40,4 +40,4 @@ gettimeofday(&rettime, nil)
 var stop: Double = Double(rettime.tv_sec) + (Double(rettime.tv_usec)/1000000)
 
 print("Obtained value of PI: " + String(pi))
-print("Time take: " + String(stop - start) + " seconds")
+print("Time taken: " + String(stop - start) + " seconds")
