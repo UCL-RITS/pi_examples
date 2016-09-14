@@ -17,8 +17,8 @@ print("Calculating pi using:\n  "..num_steps.." slices\n  1 process")
 --  the best we can do with ordinary lua.
 local start_time = os.clock()
 
-for i = 0, num_steps do
-    x = (i - 0.5) * step
+for i = 0, num_steps - 1 do
+    x = (i + 0.5) * step
     sum = sum + (4.0 / (1.0 + x*x))
 end
 

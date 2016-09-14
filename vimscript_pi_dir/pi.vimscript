@@ -13,7 +13,7 @@ let start = strftime("%s")
 
 let i = 0
 while i < num_steps
-    let x    = (i - 0.5) * step
+    let x    = (i + 0.5) * step
     let sum += 4.0 / (1.0 + x*x)
     let i += 1
 endwhile
