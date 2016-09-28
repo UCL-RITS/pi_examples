@@ -18,7 +18,7 @@ step = 1.0 / num_steps
 start = time.time()
 
 def slice_area(i):
-  x = (i-0.5)*step
+  x = (i+0.5)*step
   return 4.0/(1.0+x*x)
 
 pi = step * sum([ slice_area(x) for x in xrange(num_steps) ])
