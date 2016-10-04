@@ -9,13 +9,13 @@ end
 # Get number of processes.
 # Note: In 0.4.5 on Ubuntu, the --help entry for
 # -p is wrong.  
-# -p <n> adds <n> additional procs for n >=1
+# -p <n> adds <n> additional workers for n >=1
 # By default runs 1 core, not all available
-np = nprocs()
+np = nworkers()
 
 println("Calculating PI using:")
 println("  ", numsteps, " slices")
-println("  ", np, " processe(s)")
+println("  ", np, " worker(s)")
 start = time()
 
 sum = 0.0
