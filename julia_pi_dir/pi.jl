@@ -7,10 +7,6 @@ if length(ARGS) > 0
 end
 
 # Get number of processes.
-# Note: In 0.4.5 on Ubuntu, the --help entry for
-# -p is wrong.  
-# -p <n> adds <n> additional workers for n >=1
-# By default runs 1 core, not all available
 np = nworkers()
 
 println("Calculating PI using:")
