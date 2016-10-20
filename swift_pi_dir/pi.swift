@@ -4,15 +4,9 @@ import Foundation
 
 var num_steps: Int = 1000000000
 
-#if swift(>=3)
 if CommandLine.arguments.count == 2 {
     num_steps = Int(CommandLine.arguments[1])!;
 }
-#else 
-if Process.arguments.count == 2 {
-    num_steps = Int(Process.arguments[1])!;
-} 
-#endif
 
 print("Calculating PI with:")
 print("  " + String(num_steps) + " slices")
