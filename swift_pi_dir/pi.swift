@@ -12,8 +12,8 @@ var num_steps: Int = 1000000000
 // timeval is a Glibc structure.
 var rettime:timeval = timeval(tv_sec: 0, tv_usec: 0)
 
-if Process.arguments.count == 2 {
-    num_steps = Int(Process.arguments[1])!;
+if CommandLine.arguments.count == 2 {
+    num_steps = Int(CommandLine.arguments[1])!;
 }
 
 print("Calculating PI with:")
