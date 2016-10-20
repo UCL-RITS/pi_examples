@@ -1,16 +1,8 @@
 #!/usr/bin/env swift
 
-#if os(Linux) || os(FreeBSD)
-	import Glibc
-#else
-	import Darwin
-#endif
+import Foundation
 
 var num_steps: Int = 1000000000
-
-// Set up stuff for timing from Glibc.
-// timeval is a Glibc structure.
-var rettime:timeval = timeval(tv_sec: 0, tv_usec: 0)
 
 if CommandLine.arguments.count == 2 {
     num_steps = Int(CommandLine.arguments[1])!;
@@ -23,10 +15,8 @@ print("  1 process")
 var total_sim: Double = 0.0
 var step: Double = 1.0/Double(num_steps)
 
-// gettimeofday is a Glibc function.
-// Call it with the pointer to rettime so that it fills rettime.
-gettimeofday(&rettime, nil)
-var start: Double = Double(rettime.tv_sec) + (Double(rettime.tv_usec)/1000000)
+// Get time.
+let start = Date()
 
 for i in 1...num_steps {
     var x: Double = (Double(i) - 0.5) * step
@@ -35,9 +25,9 @@ for i in 1...num_steps {
 
 var pi: Double = total_sim * step
 
-// Get time of day again.
-gettimeofday(&rettime, nil)
-var stop: Double = Double(rettime.tv_sec) + (Double(rettime.tv_usec)/1000000)
+// Get time again.
+let stop = Date()
+let interval = stop.timeIntervalSince(start)
 
 print("Obtained value of PI: " + String(pi))
-print("Time taken: " + String(stop - start) + " seconds")
+print("Time taken: " + String(interval) + " seconds")
