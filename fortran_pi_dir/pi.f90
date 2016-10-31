@@ -3,7 +3,7 @@ program pi
   implicit none
 
   double precision  :: step, x, sum, mypi, start, stop
-  integer(kind=8)   :: num_steps, i
+  integer*8         :: num_steps, i
   character(len=32) :: arg
 
   num_steps = 1000000000
@@ -16,9 +16,9 @@ program pi
 
 ! Output start message
 
-  write(*,'(A)'),"Calculating PI using:"
-  write(*,'(A,1I16,A)'),"                  ",num_steps, " slices"
-  write(*,'(A,1I16,A)'),"                  ",1," process"
+  write(*,'(A)') "Calculating PI using:"
+  write(*,'(A,1I16,A)') "                  ",num_steps, " slices"
+  write(*,'(A,1I16,A)') "                  ",1," process"
 
 ! Initialise time counter and sum: set step size
 
@@ -39,8 +39,8 @@ program pi
 ! output value of PI and time taken
 ! note cpu_time is only specified as being microsecond res
 
-  write(*,'(A,1F12.10,A)'),"Obtained value of PI: ", mypi
-  write(*,'(A,1F12.5,A)'),"Time taken:           ",(stop-start), " seconds"
+  write(*,'(A,1F12.10,A)') "Obtained value of PI: ", mypi
+  write(*,'(A,1F12.5,A)') "Time taken:           ",(stop-start), " seconds"
 
 end program pi
 
