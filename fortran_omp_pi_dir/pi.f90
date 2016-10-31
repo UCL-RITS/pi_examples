@@ -3,7 +3,7 @@ program pi_openmp
   implicit none
 
   double precision  :: step, x, sum, mypi, start, stop, omp_get_wtime
-  integer(kind=8)   :: num_steps, i
+  integer*8         :: num_steps, i
   character(len=32) :: arg
   integer, external :: omp_get_num_threads 
   integer, external :: omp_get_max_threads
@@ -19,9 +19,9 @@ program pi_openmp
 
 ! Output start message
 
-  write(*,'(A)'),"Calculating PI using:"
-  write(*,'(A,1I16,A)'),"                  ",num_steps, " slices"
-  write(*,'(A,1I16,A)'),"                  ",omp_get_max_threads()," OpenMP threads"
+  write(*,'(A)') "Calculating PI using:"
+  write(*,'(A,1I16,A)') "                  ",num_steps, " slices"
+  write(*,'(A,1I16,A)') "                  ",omp_get_max_threads()," OpenMP threads"
 
 ! Initialise time counter and sum: set step size
 
@@ -49,8 +49,8 @@ program pi_openmp
 
 ! output value of PI and time taken
 
-  write(*,'(A,1F12.10,A)'),"Obtained value of PI: ", mypi
-  write(*,'(A,1F12.5,A)'),"Time taken:           ",(stop-start), " seconds"
+  write(*,'(A,1F12.10,A)') "Obtained value of PI: ", mypi
+  write(*,'(A,1F12.5,A)') "Time taken:           ",(stop-start), " seconds"
 
 end program pi_openmp
 
