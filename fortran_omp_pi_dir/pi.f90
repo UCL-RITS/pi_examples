@@ -29,6 +29,10 @@ program pi_openmp
   sum = 0.
   step = 1.0d0 / num_steps
 
+! Specify that the loop be parallelised, with summation of individual
+! threads' sum values to yield overall sum. Specify that the variable
+! x is local to each thread.
+
 !$OMP PARALLEL 
 !$OMP DO PRIVATE(x) REDUCTION(+:sum)
   do i = 1, num_steps
