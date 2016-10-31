@@ -44,7 +44,6 @@ program pi_openmp
   stop = omp_get_wtime()
 
 ! output value of PI and time taken
-! note cpu_time is only specified as being microsecond res
 
   write(*,'(A,1F12.10,A)'),"Obtained value of PI: ", mypi
   write(*,'(A,1F12.5,A)'),"Time taken:           ",(stop-start), " seconds"
