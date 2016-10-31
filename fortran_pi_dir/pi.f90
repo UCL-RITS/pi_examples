@@ -1,16 +1,24 @@
-program pi_openmp
+program pi
 
-  parameter (num_steps = 1000000000)
-  double precision step, x, sum, pi, my_wtime, start, stop
-  integer, external :: omp_get_num_threads 
-  integer, external :: omp_get_max_threads
-  integer, external :: omp_get_thread_num
+  implicit none
+
+  double precision  :: step, x, sum, mypi, start, stop
+  integer(kind=8)   :: num_steps, i
+  character(len=32) :: arg
+
+  num_steps = 1000000000
+
+! Get command line args (Fortran 2003 standard)
+  if (command_argument_count() > 0) then
+     call get_command_argument(1, arg)
+     read(arg,*) num_steps
+  end if
 
 ! Output start message
 
-  print *,"Calculating PI using:"
-  print *,"  ", num_steps, "slices"
-  print *,"  ", 1, "process"
+  write(*,'(A)'),"Calculating PI using:"
+  write(*,'(A,1I16,A)'),"                  ",num_steps, " slices"
+  write(*,'(A,1I16,A)'),"                  ",1," process"
 
 ! Initialise time counter and sum: set step size
 
@@ -25,14 +33,14 @@ program pi_openmp
 
 ! Evaluate PI from the final sum value, and stop the clock
 
-  pi = sum * step
+  mypi = sum * step
   call cpu_time(stop)
 
 ! output value of PI and time taken
 ! note cpu_time is only specified as being microsecond res
 
-  print *,"Obtained value of PI: ",pi
-  print *,"Time taken: ",(stop-start), "seconds"
+  write(*,'(A,1F12.10,A)'),"Obtained value of PI: ", mypi
+  write(*,'(A,1F12.5,A)'),"Time taken:           ",(stop-start), " seconds"
 
-end program pi_openmp
+end program pi
 
