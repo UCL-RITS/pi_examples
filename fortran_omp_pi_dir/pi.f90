@@ -5,9 +5,7 @@ program pi_openmp
   double precision  :: step, x, sum, mypi, start, stop, omp_get_wtime
   integer*8         :: num_steps, i
   character(len=32) :: arg
-  integer, external :: omp_get_num_threads 
   integer, external :: omp_get_max_threads
-  integer, external :: omp_get_thread_num
 
   num_steps = 1000000000
 
