@@ -5,7 +5,7 @@ program pi
   implicit none
 
   double precision    :: step, x, sum, mypi, start, stop
-  integer(kind=int64)  :: num_steps, i
+  integer(kind=int64) :: num_steps, i
   character(len=32)   :: arg
 
   num_steps = 1000000000
