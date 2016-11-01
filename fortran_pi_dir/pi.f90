@@ -1,10 +1,12 @@
 program pi
 
+  use ISO_FORTRAN_ENV
+
   implicit none
 
-  double precision  :: step, x, sum, mypi, start, stop
-  integer*8         :: num_steps, i
-  character(len=32) :: arg
+  double precision    :: step, x, sum, mypi, start, stop
+  integer(kind=int64)  :: num_steps, i
+  character(len=32)   :: arg
 
   num_steps = 1000000000
 

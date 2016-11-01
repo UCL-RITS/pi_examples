@@ -1,11 +1,13 @@
 program pi_openmp
 
-  implicit none
+  use ISO_FORTRAN_ENV
 
-  double precision  :: step, x, sum, mypi, start, stop, omp_get_wtime
-  integer*8         :: num_steps, i
-  character(len=32) :: arg
-  integer, external :: omp_get_max_threads
+  implicit none
+  
+  double precision    :: step, x, sum, mypi, start, stop, omp_get_wtime
+  integer(kind=int64) :: num_steps, i
+  character(len=32)   :: arg
+  integer, external   :: omp_get_max_threads
 
   num_steps = 1000000000
 
