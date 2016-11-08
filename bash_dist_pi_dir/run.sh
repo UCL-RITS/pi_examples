@@ -66,7 +66,7 @@ values=$( \
              my_slice_start = $thread * $num_steps / $num_threads 
              my_slice_stop  = (($thread + 1) * $num_steps / $num_threads) - 1 
              for (i=$my_slice_start;i<$my_slice_stop;i=i+1) {
-               x = (i - 0.5) * $step
+               x = (i + 0.5) * $step
                sum = sum + ( 4 / ( 1 + x*x ) )
              }
              sum
