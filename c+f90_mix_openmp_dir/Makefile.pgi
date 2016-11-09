@@ -1,8 +1,8 @@
-CC=icc
-FC=ifort
+CC=pgcc
+FC=pgfortran
 
-COPT=-O3 -xT 
-FOPT=-O3 -xT -openmp
+COPT=-O3 
+FOPT=-O3 -mp
 
 pi: pi.o pi_mytime.o
 	$(FC) -o pi $(FOPT) pi.o pi_mytime.o
