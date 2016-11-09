@@ -1,15 +1,17 @@
-EXEC=pi
+help:
+	@echo ''
+	@echo 'make intel    Build with ifort.'
+	@echo 'make nag      Build with nagfor.'
+	@echo 'make gfortran Build with gfortran.'
+	@echo 'make pgi      Build with pgfortran.'
+	@echo ''
 
-FC=ifort
-
-FOPT=-O2 -xHost
-
-$(EXEC): pi.f90
-	$(FC) $(FOPT) -o $(EXEC) pi.f90
-
+.DEFAULT:
+	@test -f Makefile.$@
+	$(MAKE) -f Makefile.$@
 
 clean:
-	rm -f *.o $(EXEC)
+	rm -f *.o pi
 
-.PHONY: clean
+.PHONY: clean, help
 

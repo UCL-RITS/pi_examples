@@ -1,17 +1,17 @@
-CC=icc
-FC=ifort
+help:
+	@echo ''
+	@echo 'make intel    Build with ifort.'
+	@echo 'make nag      Build with nagfor.'
+	@echo 'make gnu      Build with gfortran.'
+	@echo 'make pgi      Build with pgfortran.'
+	@echo ''
 
-COPT=-O3 -xT 
-FOPT=-O3 -xT -openmp
-
-pi: pi.o pi_mytime.o
-	$(FC) -o pi $(FOPT) pi.o pi_mytime.o
-
-pi.o: pi.f90
-	$(FC) $(FOPT) -c pi.f90
-
-pi_mytime.o: pi_mytime.c
-	$(CC) $(COPT) -c pi_mytime.c
+.DEFAULT:
+	@test -f Makefile.$@
+	$(MAKE) -f Makefile.$@
 
 clean:
 	rm -f *.o pi
+
+.PHONY: clean, help
+
