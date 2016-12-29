@@ -1,0 +1,41 @@
+
+// This is an implementation of our pi example in a language which is both
+// syntax-correct Java /and/ C#
+//
+// This source file is sym-linked to both code.cs and code.java by 
+// the Makefile
+//
+// The run(long) method is called by either pi.cs or pi.java depending on
+// which compiler is used.
+
+public class code {
+
+    public static void run(long numsteps) {
+        long i, start, stop, difference;
+        double step, x, psum, mypi, time;
+
+        sys.println("Calculating PI using:");
+        sys.println("  " + numsteps + " slices");
+        sys.println("  1 processes");
+
+        start = sys.time();
+
+        psum = 0.0d;
+        step = 1d/(double)numsteps;
+        
+        for (i = 0; i < numsteps; i++) {
+            x = ((double)i + 0.5d) * step;
+            psum = psum + 4d/(1d + (x * x));
+        } 
+        
+        mypi = psum * step;
+        
+        stop = sys.time();
+        difference = stop - start;
+        time = (double)(difference)/1000d;
+        
+        sys.println("Obtained value of PI: " + mypi);
+        sys.println("Time taken: " + time + " seconds");
+
+    }
+}
