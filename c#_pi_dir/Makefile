@@ -2,7 +2,7 @@
 CSHARP=mcs
 
 pi.exe: pi.cs
-	$(CSHARP) -platform:x64 pi.cs
+	$(CSHARP) pi.cs
 
 clean:
 	rm pi.exe
