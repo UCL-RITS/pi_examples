@@ -8,9 +8,9 @@ VARIABLE step        ( size of slice        )
 VARIABLE x           ( intermediate value 1 )
 VARIABLE x2          ( intermediate value 2 )
 VARIABLE mypi        ( estimate of pi       )
-VARIABLE start
-VARIABLE stop
-VARIABLE time
+VARIABLE start       ( start time [us]      ) 
+VARIABLE stop        ( finish time [us]     )
+VARIABLE time        ( elapsed time [s]     )
 
 : PICALC ( Calculates pi as per other examples ) 
   100000000 n !
