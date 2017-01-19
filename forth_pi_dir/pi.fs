@@ -13,23 +13,33 @@ VARIABLE stop        ( finish time [us]     )
 VARIABLE time        ( elapsed time [s]     )
 
 : PICALC ( Calculates pi as per other examples ) 
-  100000000 n !
+
+( If there's a value at the top of the stack set that to n otherwise )
+( set n to some default value. )
+  depth 1 >= if 
+    n ! 
+  else 
+    100000000  n ! 
+  then
+
   0e totalsum f!
   1e n @ s>f f/ step f!
 
   ." Calculating PI using: " CR ."   " n @ . ." slices" CR
 
-  utime drop start ! 
+( Get current time in microseconds. )
+  utime DROP start ! 
 
-  n @ 0 do      
-    I s>f 0.5e f+ step f@ f* x f!
-    x f@ fdup f* 1e f+ x2 f! 
-    4e x2 f@ f/ totalsum f@ f+ totalsum f!
-  loop 
+  n @ 0 DO      
+    I s>f 0.5e f+ step f@ f* x f!           ( x = [i + 0.5] * step )
+    x f@ FDUP f* 1e f+ x2 f!                ( x2 = x^2 + 1         )
+    4e x2 f@ f/ totalsum f@ f+ totalsum f!  ( totalsum += 4/x2     )
+  LOOP 
 
-  totalsum f@ step F@ F*  mypi f! 
+  totalsum f@ step f@ f* mypi f! 
 
-  utime drop stop !
+( Get current time in microseconds. )
+  utime DROP stop !
   stop @ s>f start @ s>f f- 1000000e f/ time f! 
 
   ." Obtained value of PI: " mypi f@ f. CR

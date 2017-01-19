@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-gforth pi.fs
+# Put first arg at the top of the stack and run.
+gforth -e "$1" pi.fs
