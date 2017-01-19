@@ -8,14 +8,18 @@ VARIABLE step        ( size of slice        )
 VARIABLE x           ( intermediate value 1 )
 VARIABLE x2          ( intermediate value 2 )
 VARIABLE mypi        ( estimate of pi       )
-
+VARIABLE start
+VARIABLE stop
+VARIABLE time
 
 : PICALC ( Calculates pi as per other examples ) 
   100000000 n !
   0e totalsum f!
   1e n @ s>f f/ step f!
 
-  ." Calculating PI using: " n @ . ." slices" CR
+  ." Calculating PI using: " CR ."   " n @ . ." slices" CR
+
+  utime drop start ! 
 
   n @ 0 do      
     I s>f 0.5e f- step f@ f* x f!
@@ -25,8 +29,11 @@ VARIABLE mypi        ( estimate of pi       )
 
   totalsum f@ step F@ F*  mypi f! 
 
+  utime drop stop !
+  stop @ s>f start @ s>f f- 1000000e f/ time f! 
+
   ." Obtained value of PI: " mypi f@ f. CR
-  ." No time date obtained " CR
+  ." Time taken:  " time f@ f. ." seconds" CR
   ;
 
 ( Run PICALC word and then exit )
