@@ -22,7 +22,7 @@ VARIABLE time        ( elapsed time [s]     )
   utime drop start ! 
 
   n @ 0 do      
-    I s>f 0.5e f- step f@ f* x f!
+    I s>f 0.5e f+ step f@ f* x f!
     x f@ fdup f* 1e f+ x2 f! 
     4e x2 f@ f/ totalsum f@ f+ totalsum f!
   loop 
