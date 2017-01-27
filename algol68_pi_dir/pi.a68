@@ -1,0 +1,20 @@
+# PI example in ALGOL 68 for Algol 68 Genie #
+# Dr Owain Kenway                           #
+
+INT n := 10000000;
+
+print(("Calculating PI with:", newline));
+print(("  ", n, " slices", newline));
+
+REAL sum := 0;
+REAL step = 1/n;  # constant #
+
+FOR i FROM 1 TO n DO
+  REAL x := (i - 0.5) * step;
+  sum := sum + 4.0/(1.0 + (x * x))
+OD;
+
+REAL mypi := sum * step;
+
+print(("Obtained value of PI: ", mypi, newline));
+print(("No time data obtained", newline))
