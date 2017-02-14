@@ -23,6 +23,9 @@ class console {
    }
 }
 
+// Stop node.js module.exports breaking stuff.
+class module {}
+
 // load our pi code.
 load('pi.js');
 

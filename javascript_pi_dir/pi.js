@@ -22,3 +22,10 @@ function calcpi(n) {
 
     return(mypi);
 }
+
+// This allows node.js to see our function.
+module.exports = {
+    calcpi: function(n) {
+        calcpi(n);
+    }
+}
