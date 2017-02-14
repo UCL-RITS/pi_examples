@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # See if d8 is in our path:
-d8loc=`which d8`
+which d8 > /dev/null 2>&1
 d8success=$?
 
 # See if node.js is in our path:
-nodeloc=`which nodejs`
+which nodejs > /dev/null 2>&1
 nodesuccess=$?
 
 
