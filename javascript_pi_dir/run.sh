@@ -10,7 +10,7 @@ nodesuccess=$?
 
 
 if [ "$d8success" == "0" ]; then
-  d8 rund8.js $1
+  d8 rund8.js -- $1
 elif [ "$nodesuccess" == "0" ]; then
   nodejs runnode.js $1
 else
