@@ -1,0 +1,72 @@
+-- PI example in occam-pi for the Kent Relocatable Occam Compiler
+-- Owain Kenway, 2017
+ 
+-- This module is provided for a course but is part of the default install and
+-- has a lot of useful stuff (like our I/O routines!)
+#INCLUDE "course.module"
+
+-- Access command line args.
+#INCLUDE "file.module"
+
+PROC pi (CHAN BYTE out!)
+
+-- Usual declarations
+  TIMER clock:
+  INT n, start, stop, nargs:
+  REAL64 s, step, x, mypi, looptime:
+
+-- Everything happens in sequence.  At some point I'll attempt to parallelise
+-- the main loop which is the point of occam.
+  SEQ
+    n:=1000000000
+
+-- Parse our command line arguments
+    file.num.args (nargs)
+    IF 
+      nargs > 1
+        SEQ  
+          [80]BYTE buffer:
+          INT len:
+          BOOL success:
+          SEQ
+            file.nth.arg(1, buffer, len)
+            success, n:= string.to.int ([buffer FOR len])
+-- We need this line to pass through if above fails.
+      TRUE
+        SKIP
+  
+-- Print the usual banner.
+    out.string ("Calculating PI using:*n  ", 0, out!)
+    out.int (n, 0, out!)
+    out.string (" slices*n", 0, out!)
+    flush(out)
+
+-- Store start time.
+    clock ? start
+
+    s:=0.0
+    step:=1.0/(REAL64 ROUND n)
+
+-- Our usual main loop.
+    SEQ i = 0 FOR n
+      SEQ
+        x := ((REAL64 ROUND i) + 0.5) * step
+        s := s + (4.0/(1.0 + (x*x)))
+
+-- Work out pi.
+    mypi := s * step
+
+-- Store finish time.
+    clock ? stop
+
+-- On 32 bit platforms time is in microseconds.
+    looptime := (REAL64 ROUND (stop - start))/1000000.0
+  
+-- Print our results.
+    out.string("Obtained value for PI: ", 0, out!)
+    out.real64(mypi, 0, 0, out!)
+    out.string("*nTime taken: ", 0, out!)
+    out.real64(looptime, 0, 0, out!)
+    out.string(" seconds*n", 0, out!)
+:
+
