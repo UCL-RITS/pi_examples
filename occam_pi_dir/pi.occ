@@ -18,7 +18,7 @@ PROC pi (CHAN BYTE out!)
 -- Everything happens in sequence.  At some point I'll attempt to parallelise
 -- the main loop which is the point of occam.
   SEQ
-    n:=1000000000
+    n := 1000000000
 
 -- Parse our command line arguments
     file.num.args (nargs)
@@ -30,7 +30,7 @@ PROC pi (CHAN BYTE out!)
           BOOL success:
           SEQ
             file.nth.arg(1, buffer, len)
-            success, n:= string.to.int ([buffer FOR len])
+            success, n := string.to.int ([buffer FOR len])
 -- We need this line to pass through if above fails.
       TRUE
         SKIP
@@ -44,8 +44,8 @@ PROC pi (CHAN BYTE out!)
 -- Store start time.
     clock ? start
 
-    s:=0.0
-    step:=1.0/(REAL64 ROUND n)
+    s := 0.0
+    step := 1.0/(REAL64 ROUND n)
 
 -- Our usual main loop.
     SEQ i = 0 FOR n
