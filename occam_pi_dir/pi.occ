@@ -1,4 +1,4 @@
--- PI example in occam-pi for the Kent Relocatable Occam Compiler
+-- PI example in occam-pi for the Kent Retargetable Occam Compiler
 -- Owain Kenway, 2017
  
 -- This module is provided for a course but is part of the default install and
