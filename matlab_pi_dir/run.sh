@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Work out whether to run matlab (preferred) or octave.
+which matlab > /dev/null 2>&1
+mlsuccess=$?
+which octave > /dev/null 2>&1
+ocsuccess=$?
+
 # Default to not setting n
 n=""
 
@@ -8,5 +14,10 @@ if [ $# == 1 ]; then
   n="n=${1};"
 fi
 
-# Run Matlab.
-matlab -nodisplay -nodesktop -nosplash -nojvm -r "${n}run('calcpi.m');quit;"
+if [ "$mlsuccess" == "0" ] ; then
+  matlab -nodisplay -nodesktop -nosplash -nojvm -r "${n}run('calcpi.m');quit;"
+elif [ "$ocsuccess" == "0" ] ; then
+  octave --no-gui --silent --eval "${n}run('calcpi.m');"
+else
+  echo "No Matlab interpreter found."
+fi
