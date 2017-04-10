@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
-emacs -nsl --batch --script ./elisp-pi.el
+# Compile to byte code
+make -s
+
+# Run
+PI_ARG=$1 make run
 
