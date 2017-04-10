@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-./pi.cl
+# Run
+PI_ARG=$1 make run
+

@@ -1,4 +1,3 @@
-#!/usr/bin/env clisp
 ; PI Common LISP example.
 
 (defvar n 5000000)
