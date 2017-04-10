@@ -3,6 +3,9 @@
 
 (defvar n 5000000)
 
+; Set double precision.
+(setf *read-default-float-format* 'double-float)
+
 ; This likely only works in GNU Common LISP.
 (if (> (list-length *args*) 0)
   (setq n (parse-integer (car *args*)))
@@ -24,7 +27,7 @@
 ; In Common LISP we have to enclose multi-line dos in a block. 
   (block inner  
     (setq x (* (- i 0.5) st))
-    (setq sum (+ sum (/ 4.0 (+ 1 (* x x)))))
+    (setq sum (+ sum (/ 4.0 (+ 1.0 (* x x)))))
   )
 )
 
