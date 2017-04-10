@@ -29,10 +29,10 @@
 
 (defvar p (* sum st))
 
-(defvar stop (get-internal-real-time))
-
 ; get-internal-real-time is in some platform specific unit which we can find in
 ; internal-time-units-per-second
+(defvar stop (get-internal-real-time))
+
 (defvar runt (/ (- stop start) internal-time-units-per-second))
 
 (format t "Obtained value of PI: ~a~%" p)
