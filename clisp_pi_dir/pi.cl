@@ -2,9 +2,6 @@
 
 (defvar n 5000000)
 
-; Set double precision.
-(setf *read-default-float-format* 'double-float)
-
 ; This likely only works in GNU Common LISP.
 (if (> (list-length *args*) 0)
   (setq n (parse-integer (car *args*)))
@@ -18,15 +15,15 @@
 ; dependent starting point in some fraction of a second.
 (defvar start (get-internal-real-time))
 
-(defvar sum 0.0)
-(defvar st (/ 1.0 n))
-(defvar x 0.0)
+(defvar sum 0.d0)
+(defvar st (/ 1.d0 n))
+(defvar x 0.d0)
 
 (loop for i from 1 to n do
 ; In Common LISP we have to enclose multi-line dos in a block. 
   (block inner  
-    (setq x (* (- i 0.5) st))
-    (setq sum (+ sum (/ 4.0 (+ 1.0 (* x x)))))
+    (setq x (* (- i 0.d5) st))
+    (setq sum (+ sum (/ 4.d0 (+ 1.d0 (* x x)))))
   )
 )
 
