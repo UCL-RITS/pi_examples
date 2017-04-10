@@ -9,4 +9,4 @@ run: elisp-pi.elc
 	@$(EMACS) $(EMOPTS) -script elisp-pi.elc $(PI_ARG)
 
 clean:
-	rm elisp-pi.elc
+	rm -f elisp-pi.elc
