@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-emacs --batch --script ./elisp-pi.el
+emacs -nsl --batch --script ./elisp-pi.el
 
