@@ -18,11 +18,9 @@
 (defvar st (/ 1.0 n))
 (defvar x 0.0)
 
-; dotimes can only start at 0 as far as I can tell, so we reduce the upper limit
-;  and bump it in the loop. Inefficient, but w/e, this is already an interpreted
-;  file running in a text editor
+; dotimes can only start at 0 as far as I can tell.
 (dotimes (i (- n 1))
-    (setq x (* (- (+ i 1) 0.5) st))
+    (setq x (* (+ i 0.5) st))
     (setq sum (+ sum (/ 4.0 (+ 1 (* x x)))))
 )
 
