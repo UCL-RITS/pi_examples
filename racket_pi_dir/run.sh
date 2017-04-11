@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-racket run.rkt $1
+# Run
+PI_ARG=$1 make run
+
