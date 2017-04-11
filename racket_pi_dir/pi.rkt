@@ -2,8 +2,13 @@
 
 ; PI scheme (Racket) example.
 
-; Define picalc as a function so we can test it interactively in DrRacket.
-(define (picalc n)
+(provide pi-calc)
+
+; Define pi-calc as a function so we can test it interactively in DrRacket.
+; To run at command-line:
+; $ racket run.rkt
+
+(define (pi-calc n)
   
   (display "Calculating PI using\n  ")
   (display n)
@@ -34,11 +39,3 @@
   (display " seconds\n")
   )
 
-; Our main function.
-(module* main #f
-  ; Sort out command-line options.
-  (define n (if (> (vector-length (current-command-line-arguments)) 0)
-                (string->number (vector-ref  (current-command-line-arguments) 0))
-                50000000))
-  (picalc n)
-  )

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-racket pi.rkt $1
+racket run.rkt $1
