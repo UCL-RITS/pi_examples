@@ -2,4 +2,4 @@
 
 make clean
 make 
-./pi $1
+./pi $1 $2
