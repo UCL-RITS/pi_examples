@@ -3,6 +3,7 @@
 use std::time::Instant;
 use std::thread;
 use std::sync::mpsc::channel;
+use std::env;
 
 fn main() {
 
@@ -14,14 +15,21 @@ fn main() {
     let arguments = std::env::args();
 
     num_steps = 100000000;
-    num_threads = 1;
+
+// Check OMP_NUM_THREADS.  If it doesn't exist, default to threads = 1.
+    match env::var("OMP_NUM_THREADS") {
+        Ok(val) => num_threads=val.parse::<i64>().unwrap(),
+        Err(_) => num_threads = 1,
+    }
 
 // Arguments are an iterator which is a PITA.
     let mut index = 0;
     for argument in arguments {
         if index == 1 {
             num_steps = argument.parse::<i64>().unwrap();
-        }        
+        }
+
+// Treat second argument as a number of threads that overrides OMP_NUM_THREADS.        
         if index == 2 {
             num_threads = argument.parse::<i64>().unwrap();
         }
