@@ -11,7 +11,7 @@ fn main() {
     let my_pi: f64;
     let arguments = std::env::args();
 
-    num_steps = 100000;
+    num_steps = 100000000;
 
 // Arguments are an iterator which is a PITA.
     let mut index = 0;
@@ -22,8 +22,8 @@ fn main() {
         index = index + 1;
     }
 
-    print!("Calculating PI using:\n  ");
-    print!("{} slices\n", num_steps.to_string());
+    print!("Calculating PI using:\n");
+    print!("  {} slices\n", num_steps.to_string());
     print!("  {} threads\n", 1.to_string());
 
     let start = Instant::now();
