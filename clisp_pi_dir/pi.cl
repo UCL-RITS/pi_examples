@@ -20,11 +20,8 @@
 (defvar x 0.d0)
 
 (loop for i from 1 to n do
-; In Common LISP we have to enclose multi-line dos in a block. 
-  (block inner  
     (setq x (* (- i 0.d5) st))
     (setq sum (+ sum (/ 4.d0 (+ 1.d0 (* x x)))))
-  )
 )
 
 (defvar p (* sum st))
