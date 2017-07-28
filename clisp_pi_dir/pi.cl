@@ -1,10 +1,17 @@
 ; PI Common LISP example.
 
+; Abstract getting command line arguments.
+; In sbcl the interpreter is an extra argument.
+(defun getargs ()
+  (or
+   #+CLISP *args*
+   #+SBCL (cdr *posix-argv*)
+   nil))
+
 (defvar n 5000000)
 
-; This likely only works in GNU Common LISP.
-(if (> (list-length *args*) 0)
-  (setq n (parse-integer (car *args*)))
+(if (> (list-length(getargs)) 0)
+  (setq n (parse-integer (car (getargs))))
 )
 
 (format t "Calculating PI using~%")
