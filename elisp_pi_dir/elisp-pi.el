@@ -32,9 +32,10 @@
 ; We have to print the time with ~f to force a float output.
   (princ (format "Time taken: %g seconds\n" pi-runt))
   )
-(defvar pi-n 5000000)
 
 ; Effectively the main method
+(defvar pi-n 5000000)
+
 (if (> (length command-line-args-left) 0)
     (setq pi-n (string-to-number (pop command-line-args-left)))
   )
