@@ -22,4 +22,8 @@
   (println "Time taken:" difference "seconds")
 )
 
-(calc-pi 10000000)
+(def n 10000000)
+(if (> (count *command-line-args*) 0)
+  (def n(Integer/parseInt (first *command-line-args*)))
+)
+(calc-pi n)
