@@ -11,8 +11,6 @@
 (display n)
 (display " slices\n  1 process\n")
 
-; get-internal-real-time gets time from some arbitrary, implementation 
-; dependent starting point in some fraction of a second.
 (define start (time->seconds(current-time)))
 
 (define sum 0.0d0)
@@ -26,8 +24,6 @@
 
 (define p (* sum st))
 
-; get-internal-real-time gets time from some arbitrary, implementation 
-; dependent starting point in some fraction of a second.
 (define stop (time->seconds(current-time)))
 
 (define runt (- stop start)) 
