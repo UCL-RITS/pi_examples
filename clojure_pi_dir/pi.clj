@@ -1,4 +1,8 @@
-(defn calc-pi [n]
+(ns pi
+  (:gen-class
+   :methods [[calcpi [] Integer]]))
+
+(defn calcpi [n]
   (println "Calculating PI using:")
   (println " " n "slices")
   (println "  1 processes")
@@ -21,9 +25,3 @@
   (println "Obtained value of PI:" mypi)
   (println "Time taken:" difference "seconds")
 )
-
-(def n 10000000)
-(if (> (count *command-line-args*) 0)
-  (def n(Integer/parseInt (first *command-line-args*)))
-)
-(calc-pi n)
