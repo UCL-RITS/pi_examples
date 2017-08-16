@@ -23,7 +23,7 @@ make "num_steps 1000000
 make "start first first shell [date +%s%N]
 
 make "psum 0
-make "step 1/num_steps
+make "step 1/:num_steps
 
 ; Our main loop
 
