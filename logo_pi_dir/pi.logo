@@ -1,18 +1,13 @@
-#!/usr/bin/env ucblogo
-
 ; This program calculates pi using Berkeley Logo. 
 
-; TODO - Berkeley Logo 5.5 (as from Xenial repos) doesn't support command line
-; arguments. Version 6.0 does.
-
-make "num_steps 1000000
+to picalc :num_steps
 
 ; Enclosing some procedures like print in () allows them to take more than 
 ; the default one or two inputs!
 
-(print [Calculating PI using])
-(print [\ ] :num_steps [slices])
-(print [\ \ 1 process])
+  (print [Calculating PI using])
+  (print [\ ] :num_steps [slices])
+  (print [\ \ 1 process])
 
 ; We need to use /bin/date to get the time as there doesn't seem to be a 
 ; mechanism to do this in Berkeley Logo.  The format string +%s%N prints
@@ -20,28 +15,27 @@ make "num_steps 1000000
 ; (according to the manual).
 ; Annoyingly, there isn't a millisecond option.
 
-make "start first first shell [date +%s%N]
+  make "start first first shell [date +%s%N]
 
-make "psum 0
-make "step 1/:num_steps
+  make "psum 0
+  make "step 1/:num_steps
 
 ; Our main loop
 
-make "counter 1
-repeat :num_steps [
-  make "x (:counter - 0.5) * :step
-  make "psum :psum + (4.0/(1.0 +  (:x * :x) ) )
-  make "counter sum :counter 1 ]
+  make "counter 1
+  repeat :num_steps [
+    make "x (:counter - 0.5) * :step
+    make "psum :psum + (4.0/(1.0 +  (:x * :x) ) )
+    make "counter sum :counter 1 ]
 
-make "pi :psum * :step
+  make "pi :psum * :step
 
 ; Calculate time taken and convert from nanoseconds to seconds.
 
-make "finish first first shell [date +%s%N]
-make "runtime (finish - start) / 1000000000
+  make "finish first first shell [date +%s%N]
+  make "runtime (finish - start) / 1000000000
 
-(print [Obtained value of PI:] :pi)
-(print [Time taken:] :runtime [seconds])
+  (print [Obtained value of PI:] :pi)
+  (print [Time taken:] :runtime [seconds])
 
-; Have to exit otherwise it returns us to Logo prompt.
-bye
+end
