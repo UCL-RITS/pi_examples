@@ -2,10 +2,18 @@
 
 ; Abstract getting command line arguments.
 ; In sbcl the interpreter is an extra argument.
+
+; For CLISP: clisp pi.cl <n>
+; For SBCL: sbcl pi.cl <n>
+; For GCL: gcl -f pi.cl <n>
+; For ECL: ecl -shell pi.cl <n>
+
 (defun getargs ()
   (or
    #+CLISP *args*
    #+SBCL (cdr *posix-argv*)
+   #+GCL (cdr si::*command-args*)
+   #+ECL (cdr(cdr(cdr si::*command-args*)))
    nil))
 
 (defvar n 5000000)
