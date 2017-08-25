@@ -4,7 +4,7 @@
 ; In sbcl the interpreter is an extra argument.
 
 ; For CLISP: clisp pi.cl <n>
-; For SBCL: sbcl pi.cl <n>
+; For SBCL: sbcl --script pi.cl <n>
 ; For GCL: gcl -f pi.cl <n>
 ; For ECL: ecl -shell pi.cl <n>
 
