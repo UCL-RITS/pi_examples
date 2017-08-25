@@ -14,13 +14,13 @@ which clisp > /dev/null 2>&1
 clispsuccess=$?
 
 if [ "$sbclsuccess" == "0" ]; then
-  sbcl --script pi.cl $1
+  PI_ARG=$1 make -f Makefile.sbcl
 elif [ "$eclsuccess" == "0" ]; then 
-  make clean && PI_ARG=$1 make ecl
-elif [ "$gclsuccess" == "0" ]; then 
-  gcl -f pi.cl $1
+  make clean && PI_ARG=$1 make -f Makefile.ecl
 elif [ "$clispsuccess" == "0" ]; then 
-  make clean && PI_ARG=$1 make clisp
+  make clean && PI_ARG=$1 make -f Makefile.clisp
+elif [ "$gclsuccess" == "0" ]; then 
+   PI_ARG=$1 make -f Makefile.gcl
 else
   echo "No Common LISP implementation found."
   exit 1
