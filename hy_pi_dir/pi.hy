@@ -11,17 +11,17 @@
 (print "Calculating PI with:\n " numslices "slices\n " 1 "process")
 
 (setv totalsum 0)
-(setv slice (/ 1 numslices))
+(setv chunk (/ 1 numslices))
 
 (setv start (time.time))
 
 ; Hy loops start from 0
 (for [i (range numslices)]
-  (setv x (* (+ i 0.5) slice))
+  (setv x (* (+ i 0.5) chunk))
   (setv totalsum (+ (/ 4.0 (+ 1.0 (* x x)))))
 )
 
-(setv pi (* totalsum slice))
+(setv pi (* totalsum chunk))
 
 (setv stop (time.time))
 
