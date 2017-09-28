@@ -18,7 +18,7 @@
 ; Hy loops start from 0
 (for [i (range numslices)]
   (setv x (* (+ i 0.5) chunk))
-  (setv totalsum (+ (/ 4.0 (+ 1.0 (* x x)))))
+  (setv totalsum (+ totalsum (/ 4.0 (+ 1.0 (* x x)))))
 )
 
 (setv pi (* totalsum chunk))
