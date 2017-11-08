@@ -6,14 +6,9 @@ def calcpi(n, r):
 
 # Use a generator to save memory (lists are huge!).
 def gen_x(n):
-    i = 0.5
-    while (i < n):
-        v = (yield i/n)
-        if v is not None:
-            i = v
-        else:
-            i = i + 1
-        
+    for i in range(n):
+        yield (i + 0.5)/n
+
 # In lieu of a main.
 if __name__=='__main__':
     import sys
