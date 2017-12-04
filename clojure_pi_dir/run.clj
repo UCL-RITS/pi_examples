@@ -10,5 +10,18 @@
 )
 
 (import 'pi)
+(println "Calculating PI using:")
+(println " " n "slices")
+(println "  1 processes")
 
-(pi/calcpi n)
+; When referring to Java stuff the syntax is class/method.
+(def start (System/currentTimeMillis))
+
+; Call our function for estimating pi.
+(def mypi (pi/calcpi n))
+
+(def stop (System/currentTimeMillis))
+(def difference (/ (- stop start) 1000.0))
+
+(println "Obtained value of PI:" mypi)
+(println "Time taken:" difference "seconds")

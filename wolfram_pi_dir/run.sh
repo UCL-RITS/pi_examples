@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-wolframscript -file pi.wl $1
+wolfram -script pi.wl $1
