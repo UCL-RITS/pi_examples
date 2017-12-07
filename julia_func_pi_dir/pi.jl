@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 
-p(n) = (reduce(+,map((x->(4/(1+(x*x)))),(map((x->x/n),range(0.5,n)))))/n)
+p(n) = (reduce(+,map((x->(4/(1+(x*x)))),(0.5/n):(1/n):1))/n)
 
 function picalc(numsteps)
 
