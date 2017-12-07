@@ -9,7 +9,7 @@ import System.CPUTime
 import GHC.Float
 
 -- Set up our function
-calcpi(n) = (4.0/n) * sum (map (\x -> 1.0/(1.0+(x*x))) [(x-0.5)/n | x <- [1..n]])
+calcpi(n) = (4.0/n) * sum ([1.0/(1.0+(((x-0.5)/n)*((x-0.5)/n))) | x <- [1..n]])
 
 -- Main function
 main = do
