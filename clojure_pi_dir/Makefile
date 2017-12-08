@@ -14,5 +14,6 @@ pi.jar: pi.clj Makefile
 tidy: pi.jar
 	@rm -f *.class
 
-clean: tidy
+clean: 
 	rm -f pi.jar
+	rm -f *.class
