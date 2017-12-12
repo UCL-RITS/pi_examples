@@ -1,0 +1,8 @@
+print("Calculating PI using:")$ 
+print(" ", ns, " slices")$
+print("  1 processor")$
+p(n) := (4/n)* sum((1/(1+(((i-0.5)/n)^2))),i,0,n);
+bg:elapsed_real_time()$
+print("Estimated value of PI:", p(ns))$
+ed:elapsed_real_time()$
+print("Time taken: ", ed-bg, " seconds")$
