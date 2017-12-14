@@ -1,5 +1,8 @@
-// Attempt to convert to "SIX" syntax of which there is basically no
-// documentation, or at least it's in a form I don't understand.
+// Attempt to convert to "SIX" syntax of which there is little 
+// documentation and what is is  in a form I don't understand.
+
+// Apparently no-one really uses this?
+
 // http://www.iro.umontreal.ca/~gambit/doc/gambit.html#Scheme-infix-syntax-extension
 
 // It looks like scheme names with - in them don't work but I've not worked out
