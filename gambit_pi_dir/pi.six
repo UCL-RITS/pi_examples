@@ -1,5 +1,6 @@
 // Attempt to convert to "SIX" syntax of which there is basically no
-// documentation.
+// documentation, or at least it's in a form I don't undestand.
+// http://www.iro.umontreal.ca/~gambit/doc/gambit.html#Scheme-infix-syntax-extension
 
 // It looks like scheme names with - in them don't work but I've not worked out
 // what they should be.  You can however use \ to escape into normal scheme.
@@ -31,9 +32,6 @@ double p = sum * st;
 obj stop = \(time->seconds(current-time));
 obj runt = stop - start;
 
-display("Obtained value of PI: ");
-display(p);
-display("\n");
-display(\(string-append "Time taken: " (number->string runt)));
-display(" seconds\n");
+display(\(string-append "Obtained value of PI: " (number->string p) "\n"));
+display(\(string-append "Time taken: " (number->string runt) " seconds\n"));
 exit();
