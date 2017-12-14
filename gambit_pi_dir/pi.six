@@ -1,0 +1,39 @@
+// Attempt to convert to "SIX" syntax of which there is basically no
+// documentation.
+
+// It looks like scheme names with - in them don't work but I've not worked out
+// what they should be.  You can however use \ to escape into normal scheme.
+
+int n;
+
+if (length(\(command-line)) > 2) { 
+	n = \(string->number (list-ref (command-line) 2));
+} else {
+	n = 5000000;	
+}
+
+display("Calculating PI using\n  ");
+display(n);
+display(" slices\n  1 process\n");
+
+obj start = \(time->seconds(current-time));
+
+double sum = 0.0;
+double st = 1.0/n;
+double x = 0.0;
+
+for (int i=0; i<n; i++) {
+	x = st * (i + 0.5);
+	sum = sum + (4/(1.0 + (x * x)));
+}
+double p = sum * st;
+
+obj stop = \(time->seconds(current-time));
+obj runt = stop - start;
+
+display("Obtained value of PI: ");
+display(p);
+display("\n");
+display(\(string-append "Time taken: " (number->string runt)));
+display(" seconds\n");
+exit();
