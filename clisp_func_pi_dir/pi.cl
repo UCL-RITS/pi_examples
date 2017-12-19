@@ -17,9 +17,9 @@
    nil))
 
 (defun range (b n j) 
-  (if (>= b n)
-    '()
-    (cons b (range (+ b j) n j))
+  (loop while (< b n) 
+    do (setf b (+ b j)) 
+    collect (- b j)
   )
 )
 
