@@ -1,0 +1,8 @@
+CLISP=sbcl
+CLOPTS=--control-stack-size 256 --script
+
+run: 
+	@$(CLISP) $(CLOPTS) pi.cl $(PI_ARG)
+
+clean:
+	rm -f pi.fas pi.lib pi.o

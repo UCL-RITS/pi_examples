@@ -8,9 +8,8 @@ import System.CPUTime
 -- It's GHC-specific and non-portable.
 import GHC.Float
 
--- Set up some functions
-y(x) = 1.0/(1.0+(x*x))
-calcpi(n) = (4.0/n) * sum (map y (map (/ n) [0.5..(n-0.5)]))
+-- Set up our function
+calcpi(n) = (4.0/n) * sum ([1.0/(1.0+(((x-0.5)/n)*((x-0.5)/n))) | x <- [1..n]])
 
 -- Main function
 main = do

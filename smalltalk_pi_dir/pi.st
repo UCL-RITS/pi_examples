@@ -13,7 +13,7 @@
   Dr Owain Kenway
 "
 
-| n totalsum step x mypi start stop time |
+| n ntext totalsum step x mypi start stop time |
 
 n := 1000000. 
 
@@ -25,6 +25,15 @@ n := 1000000.
    ifTrue: [
       (Smalltalk arguments size > 0) 
          ifTrue: [ n := (Smalltalk arguments at: 1) asInteger ].
+   ].
+
+"
+  If we are running in Squeak, ask the user for the number of slices.
+" 
+(Smalltalk version startsWith: 'Squeak')
+   ifTrue: [
+      ntext := FillInTheBlank request:'How many slices?'.
+      n:= ntext asInteger.
    ].
 
 Transcript show: 'Calculating PI using'; cr.

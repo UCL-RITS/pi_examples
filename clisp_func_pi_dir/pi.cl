@@ -16,6 +16,16 @@
    #+ECL (cdr(cdr(cdr si::*command-args*)))
    nil))
 
+(defun range (b n j) 
+  (loop while (< b n) 
+    do (setf b (+ b j)) 
+    collect (- b j)
+  )
+)
+
+
+(defun pc (c) (/ (apply #'+ (map 'list #'(lambda (x) (/ 4 (+ 1 (* x x))))((lambda (n) (range (/ 0.5 n) 1 (/ 1 n))) c))) c))
+
 (defvar n 5000000)
 
 (if (> (list-length(getargs)) 0)
@@ -30,16 +40,7 @@
 ; dependent starting point in some fraction of a second.
 (defvar start (get-internal-real-time))
 
-(defvar sum 0.d0)
-(defvar st (/ 1.d0 n))
-(defvar x 0.d0)
-
-(loop for i from 1 to n do
-    (setq x (* (- i 0.d5) st))
-    (setq sum (+ sum (/ 4.d0 (+ 1.d0 (* x x)))))
-)
-
-(defvar p (* sum st))
+(defvar p (pc n))
 
 ; get-internal-real-time is in some platform specific unit which we can find in
 ; internal-time-units-per-second
