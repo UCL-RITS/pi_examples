@@ -5,6 +5,14 @@
 import time
 import sys
 
+# range in python 2 generates an explicit list, which can be somewhat huge in this case
+#  python 2 xrange and python 3 range both act as a sequence generator instead
+if (sys.version_info > (3, 0)):
+    range_func=range
+else:
+    range_func=xrange
+
+
 num_steps = 1000*1000*10
 
 if len(sys.argv) > 1:
@@ -22,7 +30,7 @@ def slice_area_gen(l):
     x = (i+0.5)*step
     yield 4.0/(1.0+x*x)
 
-pi = step * sum(slice_area_gen(xrange(num_steps)))
+pi = step * sum(slice_area_gen(range_func(num_steps)))
 
 stop = time.time()
 
