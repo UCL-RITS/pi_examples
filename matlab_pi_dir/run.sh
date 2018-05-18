@@ -15,7 +15,8 @@ if [ $# == 1 ]; then
 fi
 
 if [ "$mlsuccess" == "0" ] ; then
-  matlab -nodisplay -nodesktop -nosplash -nojvm -r "${n}run('calcpi.m');quit;"
+#  matlab -nodisplay -nodesktop -nosplash -nojvm -r "${n}run('calcpi.m');quit;"
+  matlab -singleCompThread -nodisplay -nodesktop -nosplash -nojvm -r "${n}run('calcpi.m');quit;"
 elif [ "$ocsuccess" == "0" ] ; then
   octave --no-gui --silent --eval "${n}run('calcpi.m');"
 else
