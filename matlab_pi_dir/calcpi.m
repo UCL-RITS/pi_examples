@@ -4,7 +4,10 @@ if exist('n', 'var') == 0
   n = 1000000000;
 end
 
+nt = maxNumCompThreads;
+
 disp(sprintf('Calculating PI with:\n  %d slices', n));
+disp(sprintf('  %d thread(s)', nt));
 
 total_sum = 0.0;
 step = 1.0/n;
