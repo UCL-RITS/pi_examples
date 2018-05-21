@@ -22,7 +22,6 @@ for i in range(num_steps):
 	x = (i + 0.5) * step
 	total_sum += 4.0/(1.0 + x * x)
 
-#p = step * sum(4.0/(1.0 + ((i + 0.5) * (i + 0.5) * step * step)) for i in range(num_steps))
 
 p = total_sum * step
 
