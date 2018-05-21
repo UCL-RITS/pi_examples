@@ -18,7 +18,12 @@ step = 1.0 / num_steps
 
 start = time.time()
 
-p = step * sum(4.0/(1.0 + ((i + 0.5) * (i + 0.5) * step * step)) for i in range(num_steps))
+for i in range(num_steps):
+	x = (i + 0.5) * step
+	total_sum += 4.0/(1.0 + x * x)
+
+
+p = total_sum * step
 
 stop = time.time()
 
