@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 pi.py
+python3 pi.py $1
