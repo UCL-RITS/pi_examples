@@ -18,6 +18,6 @@ nvidia-smi
 pgaccelinfo 
 
 make clean
-make pgi
+make myriad
 
 ./pi

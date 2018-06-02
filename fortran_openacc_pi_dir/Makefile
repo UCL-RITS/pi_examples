@@ -1,6 +1,7 @@
 help:
 	@echo ''
-	@echo 'make pgi      Build with pgfortran.'
+	@echo 'make legion      Build for legion.'
+	@echo 'make myriad      Build for myriad.'
 	@echo ''
 
 .DEFAULT:
