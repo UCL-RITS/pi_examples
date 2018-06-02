@@ -3,6 +3,7 @@
 #$ -l gpu=1
 #$ -l h_rt=2:0:0
 #$ -cwd
+#$ -ac allow=P
 
 module purge
 module load rcps-core
