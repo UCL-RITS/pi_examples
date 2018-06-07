@@ -29,7 +29,7 @@ program pi
   if (rank == 0) then
     write(*,'(A)') "Calculating PI using:"
     write(*,'(A,1I16,A)') "                  ",num_steps, " slices"
-    write(*,'(A,1I16,A)') "                  ",numprocs," process"
+    write(*,'(A,1I16,A)') "                  ",numprocs," process(s)"
   end if
 
 ! Initialise time counter and sum: set step size
