@@ -2,7 +2,7 @@ EXEC=pi
 
 FC=pgfortran
 
-FOPT=-O2
+FOPT=$(FCFLAGS) -O2
 
 $(EXEC): pi.f90
 	$(FC) $(FOPT) -o $(EXEC) pi.f90
