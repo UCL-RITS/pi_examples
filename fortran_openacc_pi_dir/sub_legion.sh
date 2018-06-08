@@ -4,6 +4,7 @@
 #$ -l h_rt=2:0:0
 #$ -cwd
 #$ -ac allow=P
+#$ -l mem=12G
 
 module purge
 module load rcps-core
