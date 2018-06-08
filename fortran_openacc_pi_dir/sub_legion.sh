@@ -7,10 +7,6 @@
 
 module purge
 module load rcps-core
-module load compilers/gnu
-module load cuda/8.0.61-patch2/gnu-4.9.2
-#module load cuda/7.5.18/gnu-4.9.2
-module remove compilers/gnu
 module load compilers/pgi/2017.3
 
 hostname
