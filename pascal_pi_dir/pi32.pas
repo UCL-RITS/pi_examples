@@ -2,7 +2,7 @@ Program pi32(output);
 
 Uses sysutils;
 
-{ Use am Int64 for numsteps because we want to use big numbers of steps. }
+{ Use am Cardinal for numsteps because we want to use big numbers of steps. }
 Var 
   step, x, sum, mypi, time, start, stop : Double;
   i, numsteps : Cardinal;
