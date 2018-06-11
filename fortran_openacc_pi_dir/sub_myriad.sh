@@ -7,7 +7,7 @@
 
 module purge
 module load rcps-core
-module load compilers/pgi/2017.3
+module load compilers/pgi/2018.5-llvm
 
 hostname
 
