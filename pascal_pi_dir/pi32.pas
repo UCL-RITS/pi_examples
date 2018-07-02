@@ -38,7 +38,7 @@ Begin
 { Note: Highest resolution of this method is milliseconds.}
   time := (stop - start)/1000;
 
-  Writeln('Obtained value of PI: ', mypi);
-  Writeln('Time taken: ', time, ' seconds');
+  Writeln('Obtained value of PI: ', FloatToStrf(mypi, fffixed, 2, 8));
+  Writeln('Time taken: ', FloatToStrf(time, fffixed, 4, 4), ' seconds');
 
 End.
