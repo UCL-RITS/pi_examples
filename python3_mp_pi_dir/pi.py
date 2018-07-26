@@ -1,4 +1,4 @@
-# Version of the Python Pi example compatible 3 optimised.
+# Version of the Python Pi example using multiprocessing.
 
 # Dr Owain Kenway
 
