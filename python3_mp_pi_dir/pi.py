@@ -4,7 +4,7 @@
 
 import time
 import sys
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Queue, cpu_count
 
 def pi_chunk(n, lower, upper, q):
 	step = 1.0 / n
@@ -15,7 +15,7 @@ def pi_chunk(n, lower, upper, q):
 if __name__=='__main__':
 
 	num_steps = 10000000
-	procs = 1
+	procs = cpu_count()
 	q = Queue()
 	processes = []
 	decomp_debug = False
