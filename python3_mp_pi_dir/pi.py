@@ -55,6 +55,8 @@ if __name__=='__main__':
 	for a in range(procs):
 		l = int(a * (num_steps/procs))
 		u = int((a + 1) * (num_steps/procs))
+		if (a == (procs - 1):
+			u = num_steps # Correct for slight integer div issues.
 		if (decomp_debug):
 			 print(str(a) + " lower: " + str(l) + " upper: " + str(u))
 		processes.append(Process(target=pi_chunk, args=(num_steps, l, u,q)))
