@@ -15,6 +15,11 @@
   args
 )
 
+;; Get time in float seconds.
+(define (current-time-seconds) 
+  (time->seconds(current-time))
+)
+
 ;; Calculate pi for some n with our ususal method.
 (define (calc-pi n) 
   (define sum 0.0d0)
@@ -40,13 +45,10 @@
 (display n)
 (display " slices\n  1 process\n")
 
-(define start (time->seconds(current-time)))
-
+(define start (current-time-seconds))
 (define p (calc-pi n))
-
-(define stop (time->seconds(current-time)))
-
-(define runt (- stop start)) 
+(define stop (current-time-seconds))
+(define runt (- stop start))
 
 (display (string-append "Obtained value of PI: "(number->string p)))
 (newline)
