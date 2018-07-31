@@ -2,9 +2,24 @@
 
 (define n 5000000)
 
+; Annoyingly, command-line has a different length if we compile a stand-alone
+; binary as opposed to run through gsi/gsc, for obvious reasons.
+(define args (command-line))
+
+(if (string=? (car args) "gsi")
+  (set! args (cdr args))
+)
+
+(if (string=? (car args) "gsc")
+  (set! args (cdr args))
+)
+
+; Pop off filename.
+(set! args (cdr args))
+
 ; Set n as per arguments.
-(if (> (length (command-line)) 2)  
-  (set! n (string->number (list-ref (command-line) 2)))
+(if (> (length args) 0)  
+  (set! n (string->number (car args)))
 )
 
 (display "Calculating PI using\n  ")
