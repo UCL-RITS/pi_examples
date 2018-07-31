@@ -1,25 +1,39 @@
-; PI scheme (Gambit) example.
+;; Function to get our command-line arguments.
+;; Annoyingly (and obviously) command-line has a different length depending
+;; on whether the program is run through gsi or whether it is compiled to a
+;; stand-alone executable and run - i.e. either
+;;   ./pi <args>
+;;   gsi pi.scm <args>
+(define (command-line-args) 
+  (define args (command-line))
+  (if (string=? (car args) "gsi")
+    (set! args (cdr args))
+  )
 
-(define n 5000000)
-
-; Annoyingly, command-line has a different length if we compile a stand-alone
-; binary as opposed to run through gsi/gsc, for obvious reasons.
-(define args (command-line))
-
-(if (string=? (car args) "gsi")
+;; Strip the program name (./pi or pi.scm)
   (set! args (cdr args))
+  args
 )
 
-(if (string=? (car args) "gsc")
-  (set! args (cdr args))
+;; Calculate pi for some n with our ususal method.
+(define (calc-pi n) 
+  (define sum 0.0d0)
+  (define st (/ 1.0d0 n))
+  (define x 0.0d0)
+  (do ((i 1 (+ i 1))) ((> i n)) 
+    (set! x (* (- i 0.5d0) st))
+    (set! sum (+ sum (/ 4.0d0 (+ 1.0d0 (* x x)))))
+  )
+  (* sum st)
 )
 
-; Pop off filename.
-(set! args (cdr args))
+;; It's unclear how to define a main method?
+;; This is our program body proper.
+(define n 50000000)
 
-; Set n as per arguments.
-(if (> (length args) 0)  
-  (set! n (string->number (car args)))
+(define arguments (command-line-args))
+(if (> (length arguments) 0)  
+  (set! n (string->number (car arguments)))
 )
 
 (display "Calculating PI using\n  ")
@@ -28,16 +42,7 @@
 
 (define start (time->seconds(current-time)))
 
-(define sum 0.0d0)
-(define st (/ 1.0d0 n))
-(define x 0.0d0)
-
-(do ((i 1 (+ i 1))) ((> i n)) 
-  (set! x (* (- i 0.5d0) st))
-  (set! sum (+ sum (/ 4.0d0 (+ 1.0d0 (* x x)))))
-)
-
-(define p (* sum st))
+(define p (calc-pi n))
 
 (define stop (time->seconds(current-time)))
 
@@ -47,4 +52,7 @@
 (newline)
 (display (string-append "Time taken: " (number->string runt)))
 (display " seconds\n")
+
+;; Need this otherwise when run with gsi, gsi tries to load subsequent args
+;; as files.
 (exit)
