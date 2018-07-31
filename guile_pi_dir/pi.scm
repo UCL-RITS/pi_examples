@@ -48,6 +48,3 @@
 (display (string-append "Time taken: " (number->string runt)))
 (display " seconds\n")
 
-;; Need this otherwise when run with gsi, gsi tries to load subsequent args
-;; as files.
-(exit)

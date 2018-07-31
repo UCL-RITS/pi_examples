@@ -60,6 +60,5 @@
 (display (string-append "Time taken: " (number->string runt)))
 (display " seconds\n")
 
-;; Need this otherwise when run with gsi, gsi tries to load subsequent args
-;; as files.
+;; Need this otherwise when run with csi, csi drops to a repl.
 (exit)
