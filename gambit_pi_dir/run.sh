@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-gsi ./pi.scm $1
+make
+./pi $1
