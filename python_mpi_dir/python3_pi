@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import time
+import sys
+from mpi4py import MPI
+
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
+
+num_steps = 1000*1000*10
+
+if len(sys.argv) > 1:
+  num_steps = int(sys.argv[1])
+
+if (rank == 0):
+  print("Calculating PI with:\n  %d slices" % num_steps)
+  print("  %d process(s)" % size)
+
+total_sum = 0
+step = 1.0 / num_steps
+
+if (rank == 0):
+  start = time.time()
+
+chunkstart = int(rank * num_steps / size)
+chunkend = int((rank + 1) * num_steps / size) 
+
+for i in range(chunkstart, chunkend):
+  x = (i + 0.5) * step
+  total_sum += 4.0 / (1.0 + x*x)
+
+# This puts a list on rank 0 of the values gathered.
+total_sum = comm.gather(total_sum, root=0)
+
+if (rank == 0):
+  total_sum = sum(total_sum) 
+  pi = total_sum * step
+  stop = time.time()
+
+  print("Obtained value of PI: %.32g\n"
+        "Time taken: %g seconds"
+        % (pi, stop - start) )
+
+
+
+
