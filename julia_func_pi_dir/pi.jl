@@ -5,7 +5,8 @@ p(n) = (reduce(+,map((x->(4/(1+(x*x)))),(0.5/n):(1/n):1))/n)
 function picalc(numsteps)
 
   # Get number of processes.
-  np = nworkers()
+  # np = nworkers()
+  np = 1
 
   println("Calculating PI using:")
   println("  ", numsteps, " slices")

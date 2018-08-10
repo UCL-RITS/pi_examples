@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-julia pi.jl $*
+THREADS=${OMP_NUM_THREADS:-1}
+
+julia -p $THREADS pi.jl $*

@@ -1,5 +1,3 @@
-#!/usr/bin/env julia
-
 function picalc(numsteps)
 
   # Get number of processes.
@@ -13,7 +11,7 @@ function picalc(numsteps)
   sum = 0.0
   slice = 1.0/numsteps
 
-  sum = @parallel (+) for i = 1:numsteps
+  sum = @distributed (+) for i = 1:numsteps
     x = (i - 0.5) * slice
     (4.0/(1.0 + x^2))
   end
