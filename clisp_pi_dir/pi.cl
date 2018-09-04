@@ -18,7 +18,7 @@
 
 (defun calcpi (n)
   (/ (loop for i from 0 to n
-	sum (/ 4.d0 (+ 1.d0 (expt (* (- i 0.d5) (/ 1.d0 n)) 2 ))))
+	sum (/ 4.d0 (+ 1.d0 (expt (* (- i 0.5d0) (/ 1.d0 n)) 2 ))))
 	 n)
 )
 
