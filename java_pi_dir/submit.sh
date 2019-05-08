@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 #$ -N JDKbench
-#$ -l h_rt 00:20:00
+#$ -l h_rt=00:20:00
 #$ -l mem=4G
 
 #$ -cwd
