@@ -13,10 +13,12 @@ do
   make clean
   module load $a
   make
+  echo -n "${a}" >> timing.csv
   for b in `seq -w 10`
   do
     t=`java pi | grep Time | awk '{print $3}'`
-    echo "${a}|${b}|${t}" >> timing.csv
+    echo -n "|${t}" >> timing.csv
   done
+  echo >> timing.csv
   module remove $a
 done
