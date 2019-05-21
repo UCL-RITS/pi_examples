@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 project (pi, Fortran)
 
 # Various versions of the OpenMP.cmake throw errors related to CMP0012
-cmake_policy(SET CMP0012 OLD)
+cmake_policy(SET CMP0012 NEW)
 
 set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -O2")
 
