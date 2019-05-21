@@ -4,6 +4,8 @@ project (pi, Fortran)
 # Various versions of the OpenMP.cmake throw errors related to CMP0012
 cmake_policy(SET CMP0012 OLD)
 
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -O2")
+
 find_package(OpenMP)
 if (OPENMP_FOUND)
   message(">>> OpenMP detected <<<")
