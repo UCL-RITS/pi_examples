@@ -4,7 +4,7 @@
 ; We could actually build in this script because of the way LISPs like Clojure
 ; work but that would mean building every time, so leave it to Make.
 
-(def n 10000000)
+(def n 50000000)
 (if (> (count *command-line-args*) 0)
   (def n(Integer/parseInt (first *command-line-args*)))
 )
