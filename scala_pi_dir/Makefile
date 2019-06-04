@@ -5,4 +5,4 @@ pi.class: pi.scala Makefile
 	$(SCALAC) pi.scala
 
 clean:
-	rm *.class
+	rm -f *.class

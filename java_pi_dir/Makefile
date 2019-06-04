@@ -5,4 +5,4 @@ pi.class: pi.java
 	$(JAVAC) pi.java
 
 clean:
-	rm pi.class
+	rm -f pi.class
