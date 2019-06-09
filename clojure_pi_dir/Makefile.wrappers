@@ -1,0 +1,19 @@
+# Set compiler here.
+CLJC = clojure-compiler
+CLJ = clojure-repl
+
+all: tidy
+
+run: all
+	@$(CLJ) -cp pi.jar run.clj $(PI_ARG)
+
+pi.jar: pi.clj Makefile
+	$(CLJC) -cp . pi
+	jar -cvf pi.jar *.class
+
+tidy: pi.jar
+	@rm -f *.class
+
+clean: 
+	rm -f pi.jar
+	rm -f *.class
