@@ -1,0 +1,11 @@
+EXEC=pi.g++
+
+$(EXEC): calculate_pi.o
+	g++ $(CXXFLAGS) -fopenmp -O3 -o $(EXEC) calculate_pi.o
+
+calculate_pi.o: calculate_pi.cpp timer.hpp 
+	g++ $(CXXFLAGS) -fopenmp -O3 -c calculate_pi.cpp -o $@
+
+clean:
+	-rm -f $(EXEC) calculate_pi.o
+
