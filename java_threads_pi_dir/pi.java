@@ -10,7 +10,7 @@ public class pi {
         numsteps = 500000000;
 
         if (argc.length > 0) {            
-            numsteps = Integer.parseInt(argc[0]);
+            numsteps = Long.parseLong(argc[0]);
         }
 
         if (argc.length > 1) {            
