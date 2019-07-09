@@ -24,7 +24,7 @@ public class calcpi implements Runnable {
 	public void run() {
 		double x;
 		double step = 1d/(double)n;
-		double psum = 0;
+		double psum = 0d;
 		if (this.debug) {
 			System.out.println("Calculating iterations from " + this.min + " to " + this.max);
 		}
