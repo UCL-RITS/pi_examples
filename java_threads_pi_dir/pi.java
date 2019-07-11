@@ -47,7 +47,7 @@ public class pi {
 		try {
 			t[i].join();
 		} catch (Exception e) {
-			System.out.println("oh no");
+			e.printStackTrace();
 		}
 	}
 	for (int i = 0; i < threads; i++) {
