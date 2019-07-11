@@ -6,7 +6,6 @@ public class pi {
 	Thread[] t;
 
 	threads = 1;
-	mypi = 0d;
         numsteps = 500000000;
 
         if (argc.length > 0) {            
@@ -23,37 +22,7 @@ public class pi {
 
         start = System.currentTimeMillis();
 
-	calcpi[] calcs = new calcpi[threads];
-	t = new Thread[threads];
-
-	// Decomposition - simple - at most threads - 1 iterations imbalance.
-	long perthread = numsteps/threads;
-	long leftover = numsteps - (threads * perthread);
-
-	for (int i = 0; i < threads; i++) {
-		long lmin = i*perthread;
-		long lmax = ((i+1) * perthread) -1;
-		if (i == (threads - 1)) {
-			lmax = lmax + leftover;
-		}
-		calcs[i] = new calcpi(lmin, lmax, numsteps);
-		// calcs[i].setDebug();
-		t[i] = new Thread(calcs[i], "thread: " + i);
-		t[i].start();
-
-	}
-
-	for (int i = 0; i < threads; i++) {
-		try {
-			t[i].join();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	for (int i = 0; i < threads; i++) {
-		mypi = mypi + calcs[i].getAnswer();
-	}
-
+	mypi = calcpi.calc(numsteps, threads);
         
         stop = System.currentTimeMillis();
         difference = stop - start;

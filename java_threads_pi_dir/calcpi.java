@@ -34,4 +34,41 @@ public class calcpi implements Runnable {
 		}
 		this.answer = psum * step;
 	}
+
+	public static double calc(long numsteps, int threads) {
+		calcpi[] calcs = new calcpi[threads];
+		Thread[] t;
+		t = new Thread[threads];
+
+		// Decomposition - simple - at most threads - 1 iterations imbalance.
+		long perthread = numsteps/threads;
+		long leftover = numsteps - (threads * perthread);
+		double mypi = 0d;
+
+		for (int i = 0; i < threads; i++) {
+			long lmin = i*perthread;
+			long lmax = ((i+1) * perthread) -1;
+			if (i == (threads - 1)) {
+				lmax = lmax + leftover;
+			}
+			calcs[i] = new calcpi(lmin, lmax, numsteps);
+			// calcs[i].setDebug();
+			t[i] = new Thread(calcs[i], "thread: " + i);
+			t[i].start();
+
+		}
+
+		for (int i = 0; i < threads; i++) {
+			try {
+				t[i].join();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		for (int i = 0; i < threads; i++) {
+			mypi = mypi + calcs[i].getAnswer();
+		}
+
+		return mypi;
+	}
 }
