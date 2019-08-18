@@ -28,9 +28,9 @@
   (setq n (parse-integer (car (getargs))))
 )
 
-(format t "Calculating PI using~%")
+(format t "Calculating PI using:~%")
 (format t "  ~a slices~%" n)
-(format t "  1 process~%")
+(format t "  1 thread~%")
 
 ; get-internal-real-time gets time from some arbitrary, implementation 
 ; dependent starting point in some fraction of a second.
