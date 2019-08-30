@@ -2,4 +2,4 @@
 
 make clean
 make
-./calculate_pi
+./pi

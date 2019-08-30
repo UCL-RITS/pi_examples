@@ -1,4 +1,4 @@
-EXEC=calculate_pi
+EXEC=pi
 
 SOURCES=$(wildcard *.c)
 OBJECTS=$(SOURCES:.c=.o)
