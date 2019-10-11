@@ -22,7 +22,7 @@ num_steps = 10000000
 if len(sys.argv) > 1:
 	num_steps = int(sys.argv[1])
 
-print("Calculating PI with: " + str(num_steps) + " slices")
+print(f"Calculating PI with:\n  {num_steps} slices")
 
 start = time.time()
 
@@ -30,5 +30,5 @@ p = calcpi(num_steps)
 
 stop = time.time()
 
-print("Obtained value of PI: " + str(p))
-print("Time taken: " + str(stop - start) + " seconds")
+print(f"Obtained value of PI: {p}")
+print(f"Time taken: {stop - start} seconds")
