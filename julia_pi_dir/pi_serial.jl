@@ -31,7 +31,7 @@ end
 numsteps=1000000000
 
 if length(ARGS) > 0
-  numsteps = parse(ARGS[1])
+  numsteps = parse(Int, ARGS[1])
 end
 
 picalc(numsteps)
