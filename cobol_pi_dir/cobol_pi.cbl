@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID.  CalculatePi
+       PROGRAM-ID.  CalculatePi.
        AUTHOR.  Ian Kirker.
 
        DATA DIVISION.
