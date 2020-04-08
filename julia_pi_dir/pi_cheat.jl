@@ -1,3 +1,6 @@
+@static if VERSION >= v"1"
+    using Distributed
+end
 
 function work(numsteps, np)
   sum = 0.0
