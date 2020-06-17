@@ -19,12 +19,12 @@ __global__ void calcpi(int threads, int n, double *results) {
 
    for (long i = lower; i < upper; i++) {
       x    = (i + 0.5) * step;
-      sum += 4.0 / (1.0 + x*x);
+      results[rank] += 4.0 / (1.0 + x*x);
    }
 }
 
 int main( int argc, char **argv ) {
-   long i, num_steps = 100000;
+   long num_steps = 100000;
    double result;
    int threads = 100; // threads needs to dived num_steps!
 
@@ -61,7 +61,7 @@ int main( int argc, char **argv ) {
    for (int i=0; i<threads; i++) {
       result +=sum[i];
    }
-   pi = sum * step;
+   pi = result * step;
 
    timer.stop();
 
