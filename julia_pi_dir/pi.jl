@@ -1,3 +1,7 @@
+@static if VERSION >= v"1"
+    using Distributed
+end
+
 function picalc(numsteps)
 
   # Get number of processes.
