@@ -8,7 +8,7 @@
 
 using namespace std;
 
-__global__ void calcpi(int threads, int n, double *results) {
+__global__ void calcpi(int threads, long n, double *results) {
    int rank = threadIdx.x;
    results[rank] = 0.0;
    double step = 1.0/n;
