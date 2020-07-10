@@ -24,9 +24,9 @@ __global__ void calcpi(int threads, long n, double *results) {
 }
 
 int main( int argc, char **argv ) {
-   long num_steps = 100000;
+   long num_steps = 1000000000;
    double result;
-   int threads = 100; // threads needs to dived num_steps!
+   int threads = 1000; // threads needs to dived num_steps!
 
    cout.precision(numeric_limits<double>::digits10+2);
    
