@@ -14,8 +14,8 @@ __global__ void calcpi(int threads, int n, double *results) {
    double step = 1.0/n;
    double x = 0.0;
 
-   int lower = rank * n/threads;
-   int upper = (rank + 1) * n/threads;
+   long lower = rank * n/threads;
+   long upper = (rank + 1) * n/threads;
 
    for (long i = lower; i < upper; i++) {
       x    = (i + 0.5) * step;
