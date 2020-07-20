@@ -1,20 +1,19 @@
-class pi {
-
-    public static void main(String[] argv) {
-        long i, start, stop, difference;
+public class pi {
+    public static void main(String[] argc) {
+        long i, numsteps, start, stop, difference;
         double step, x, psum, mypi, time;
 
-        long numsteps = 500000000;
+        numsteps = 500000000;
 
-        if (argv.length > 0) {
-            numsteps = Integer.parseInt(argv[0]);
+        if (argc.length > 0) {
+            numsteps = Long.parseLong(argc[0]);
         }
 
         println("Calculating PI using:");
         println("  " + numsteps + " slices");
         println("  1 processes");
 
-        start = (long)System.currentTimeMillis();
+        start = System.currentTimeMillis();
 
         psum = 0.0d;
         step = 1d/(double)numsteps;
@@ -26,7 +25,7 @@ class pi {
         
         mypi = psum * step;
         
-        stop = (long)System.currentTimeMillis();
+        stop = System.currentTimeMillis();
         difference = stop - start;
         time = (double)(difference)/1000d;
         
