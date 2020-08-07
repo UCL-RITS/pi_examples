@@ -1,8 +1,8 @@
 EXEC=pi
 
-FC=pgfortran
+FC=nvfortran
 
-FOPT=-O2 -mp -acc -ta=tesla:cc60,time -tp=haswell -Minfo=accel
+FOPT=-O2 -mp -acc -ta=tesla:cc60,time -Minfo=accel
 
 $(EXEC): pi.f90
 	$(FC) $(FOPT) -o $(EXEC) pi.f90
