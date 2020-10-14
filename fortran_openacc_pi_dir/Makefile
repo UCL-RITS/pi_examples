@@ -2,7 +2,6 @@ help:
 	@echo ''
 	@echo 'make legion      Build for legion.'
 	@echo 'make myriad      Build for myriad.'
-	@echo 'make host        Build for CPU (single core).'
 	@echo ''
 
 .DEFAULT:

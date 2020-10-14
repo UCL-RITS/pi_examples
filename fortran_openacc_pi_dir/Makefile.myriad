@@ -2,7 +2,7 @@ EXEC=pi
 
 FC=nvfortran
 
-FOPT=-O2 -mp -acc -ta=tesla:cc60,cc70,time -Minfo=accel
+FOPT=-O2 -mp -acc -ta=tesla:cc60,cc70,time,host -Minfo=accel
 
 $(EXEC): pi.f90
 	$(FC) $(FOPT) -o $(EXEC) pi.f90
