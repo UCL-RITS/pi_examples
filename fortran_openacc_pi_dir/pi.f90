@@ -1,14 +1,15 @@
 program pi
 
   use ISO_FORTRAN_ENV
+  use openacc
 
   implicit none
   
   double precision              :: step, x, s, mypi, start, stop, omp_get_wtime
   integer(kind=int64)           :: num_steps, i
   character(len=:), allocatable :: a
-  integer, external             :: omp_get_max_threads
-  integer                       :: argl
+  integer                       :: argl 
+  integer(kind=acc_device_kind) :: devices
 
   num_steps = 100000000
   num_steps = num_steps * 100 ! work around nvfortran constant size error
@@ -23,10 +24,17 @@ program pi
 
 ! Output start message
 
+  devices = acc_num_devices(acc_device_not_host)
+
   write(*,'(A)') "Calculating PI using:"
   write(*,'(A,1I16,A)') "                  ",num_steps, " slices"
-  write(*,'(A,1I16,A)') "                                    1 gpu"
-
+  if (devices > 0) then
+    write(*,'(A,1I16,A)') "                  ",devices," gpu"
+  else
+    devices = acc_num_devices(acc_device_host)
+ 
+    write(*,'(A,1I16,A)') "                  ",devices," cpu threads"
+  end if
 ! Initialise time counter and sum: set step size
 
   start = omp_get_wtime()
