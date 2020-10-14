@@ -29,11 +29,9 @@ program pi
   write(*,'(A)') "Calculating PI using:"
   write(*,'(A,1I16,A)') "                  ",num_steps, " slices"
   if (devices > 0) then
-    write(*,'(A,1I16,A)') "                  ",devices," gpu"
+    write(*,'(A,1I16,A)') "                  ",1," gpu"
   else
-    devices = acc_get_num_devices(acc_device_host)
- 
-    write(*,'(A,1I16,A)') "                  ",devices," cpu threads"
+    write(*,'(A,1I16,A)') "                  ",1," cpu core"
   end if
 ! Initialise time counter and sum: set step size
 
