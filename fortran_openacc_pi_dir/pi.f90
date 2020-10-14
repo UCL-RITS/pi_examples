@@ -24,14 +24,14 @@ program pi
 
 ! Output start message
 
-  devices = acc_num_devices(acc_device_not_host)
+  devices = acc_get_num_devices(acc_device_not_host)
 
   write(*,'(A)') "Calculating PI using:"
   write(*,'(A,1I16,A)') "                  ",num_steps, " slices"
   if (devices > 0) then
     write(*,'(A,1I16,A)') "                  ",devices," gpu"
   else
-    devices = acc_num_devices(acc_device_host)
+    devices = acc_get_num_devices(acc_device_host)
  
     write(*,'(A,1I16,A)') "                  ",devices," cpu threads"
   end if
