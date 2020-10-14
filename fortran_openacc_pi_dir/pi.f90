@@ -25,7 +25,7 @@ program pi
 
   write(*,'(A)') "Calculating PI using:"
   write(*,'(A,1I16,A)') "                  ",num_steps, " slices"
-  write(*,'(A,1I16,A)') "                  1 gpu"
+  write(*,'(A,1I16,A)') "                                  1 gpu"
 
 ! Initialise time counter and sum: set step size
 
