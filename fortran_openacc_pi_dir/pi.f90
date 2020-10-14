@@ -10,7 +10,8 @@ program pi
   integer, external             :: omp_get_max_threads
   integer                       :: argl
 
-  num_steps = 10000000000
+  num_steps = 100000000
+  num_steps = num_steps * 100 ! work around nvfortran constant size error
 
 ! Get command line args (Fortran 2003 standard)
   if (command_argument_count() > 0) then

@@ -7,7 +7,8 @@
 
 module purge
 module load rcps-core
-module load compilers/pgi/2018.5-llvm
+module load personal-modules
+module load compilers/nvhpc
 
 hostname
 
