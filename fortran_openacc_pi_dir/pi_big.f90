@@ -12,7 +12,7 @@ program pi_big
   double precision              :: step, x, s, mypi, start, stop, omp_get_wtime
   integer(kind=int64)           :: num_steps, i, j, imax, jmax
   character(len=:), allocatable :: a, b
-  integer                       :: argl, bargle
+  integer                       :: argl, bargl
   integer(kind=acc_device_kind) :: devices
 
   imax = 100000000
