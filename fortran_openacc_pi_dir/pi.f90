@@ -12,7 +12,6 @@ program pi
   integer(kind=acc_device_kind) :: devices
 
   num_steps = 100000000
-  num_steps = num_steps * 100 ! work around nvfortran constant size error
 
 ! Get command line args (Fortran 2003 standard)
   if (command_argument_count() > 0) then
