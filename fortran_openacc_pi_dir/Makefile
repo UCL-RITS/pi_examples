@@ -9,7 +9,7 @@ help:
 	$(MAKE) -f Makefile.$@
 
 clean:
-	rm -f *.o pi pi.host
+	rm -f *.o pi pi_host pi_big
 
 .PHONY: clean, help
 

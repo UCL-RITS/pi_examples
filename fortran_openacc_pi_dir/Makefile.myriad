@@ -2,14 +2,17 @@ EXEC=pi
 
 FC=nvfortran
 
-FOPT=-O2 -mp -acc -ta=tesla:cc60,cc70,time,host -Minfo=accel
+FOPT=-O2 -mp -acc -ta=tesla:cc60,cc70,time,multicore -Minfo=accel
+FHOST=-O2 -mp -acc -ta=tesla:cc60,cc70,time,host -Minfo=accel
 
-$(EXEC): pi.f90
+.DEFAULT: $(EXEC) pi_big pi_host
+
+$(EXEC): pi.f90 Makefile.myriad Makefile
 	$(FC) $(FOPT) -o $(EXEC) pi.f90
 
+pi_big: pi_big.f90 Makefile.myriad Makefile
+	$(FC) $(FOPT) -o pi_big pi_big.f90
 
-clean:
-	rm -f *.o $(EXEC)
-
-.PHONY: clean
+pi_host: pi_big.f90 Makefile.myriad Makefile
+	$(FC) $(FHOST) -o pi_host pi.f90
 
