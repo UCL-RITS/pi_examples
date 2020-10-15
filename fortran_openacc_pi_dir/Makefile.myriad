@@ -13,7 +13,7 @@ $(EXEC): pi.f90 Makefile.myriad Makefile
 pi_big: pi_big.f90 Makefile.myriad Makefile
 	$(FC) $(FOPT) -o pi_big pi_big.f90
 
-pi_host: pi_big.f90 Makefile.myriad Makefile
+pi_host: pi.f90 Makefile.myriad Makefile
 	$(FC) $(FHOST) -o pi_host pi.f90
 
 .PHONY: default
