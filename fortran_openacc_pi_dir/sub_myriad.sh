@@ -18,4 +18,4 @@ pgaccelinfo
 make clean
 make myriad
 
-./pi
+./pi_big 10000000 10000
