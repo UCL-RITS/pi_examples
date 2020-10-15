@@ -1,3 +1,5 @@
+default: myriad
+
 help:
 	@echo ''
 	@echo 'make legion      Build for legion.'
@@ -11,5 +13,5 @@ help:
 clean:
 	rm -f *.o pi pi_host pi_big
 
-.PHONY: clean, help
+.PHONY: clean, help, default
 
