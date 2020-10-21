@@ -4,7 +4,7 @@ FC=nvfortran
 
 FOPT=-O2 -Minfo=accel
 
-default: $(EXEC) pi_big pi_host
+default: $(EXEC) 
 
 $(EXEC): pi.cuf Makefile
 	$(FC) $(FOPT) -o $(EXEC) pi.cuf
