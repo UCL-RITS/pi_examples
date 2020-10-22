@@ -1,4 +1,4 @@
-# JaveScript implementations
+# JavaScript implementations
 
 This directory contains the Pi example for a number of different JavaScript implementations.  Because there is no standardisation within JavaScript (not even for importing libraries, never mind printing to a terminal) there are effectively three implmentations at the momemt - one for v8 (inc Node.js)/browser interpreters and one each for gjs from Gnome and the Windows Scripting Host.  Even the v8 version has different wrappers to give access to command line args etc.
 
