@@ -34,5 +34,5 @@ $ gjs rungjs.js <n>
 ### Windows Scripting Host
 
 ```
-C:\> cscrpt runwsh.js <n>
+C:\> cscript runwsh.js <n>
 ```
