@@ -18,7 +18,7 @@ function calcpi(n) {
     var t = (stop - start)/1000.0;
 
     console.log("Obtained value of PI: ", mypi);
-    console.log("Time taken: ", t, " seconds")
+    console.log("Time taken: ", t, " seconds");
 
     return(mypi);
 }
