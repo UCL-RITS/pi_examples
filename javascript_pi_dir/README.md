@@ -13,7 +13,7 @@ This directory contains the Pi example for a number of different JavaScript impl
 
 ### Node.js
 
-```console
+```
 $ node runnode.js <n>
 ```
 
@@ -21,18 +21,18 @@ On some systems the command to start Node.js is `nodejs`.
 
 ### D8
 
-```console
+```
 $ d8 rund8.js -- <n>
 ```
 
 ### GJS
 
-```console
+```
 $ gjs rungjs.js <n>
 ```
 
 ### Windows Scripting Host
 
-```console
+```
 C:\> cscrpt runwsh.js <n>
 ```
