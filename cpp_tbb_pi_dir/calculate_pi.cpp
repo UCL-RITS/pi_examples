@@ -42,7 +42,6 @@ int main( int argc, char **argv ) {
          }
          return chunk;
       }, std::plus<double>());
-   }
 
    pi = sum * step;
 
