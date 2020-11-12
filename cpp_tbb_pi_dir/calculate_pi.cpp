@@ -12,7 +12,7 @@
 using namespace std;
 
 int main( int argc, char **argv ) {
-   long i, num_steps = 1000000000;
+   long num_steps = 1000000000;
    int thread_count = tbb::task_scheduler_init::default_num_threads();
 
    cout.precision(numeric_limits<double>::digits10+2);
@@ -37,7 +37,7 @@ int main( int argc, char **argv ) {
       tbb::blocked_range<long>(0, num_steps),
       0.0,
       [=](tbb::blocked_range<long> j, double chunk) {
-         for (i=0;i<num_steps;i++) {
+         for (long i=j.begin();i<j.end();i++) {
             chunk += 4.0 / (1.0 + ((i + 0.5) * step)*((i + 0.5) * step));
          }
          return chunk;
