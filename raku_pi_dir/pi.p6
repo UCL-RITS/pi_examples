@@ -12,7 +12,7 @@ sub calcpi( UInt $n --> Num ) {
    return $total_sum * $step;
 }
 
-sub MAIN ($n = 10000000) {
+sub MAIN (UInt $n = 10000000) {
    say "Calculating PI with \n  $n slices\n  1 process";
   
    my DateTime $start = DateTime.now;  
