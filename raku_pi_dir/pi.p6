@@ -13,7 +13,7 @@ sub calcpi( UInt $n --> Num ) {
 }
 
 sub MAIN (UInt $n = 10000000) {
-   say "Calculating PI with \n  $n slices\n  1 process";
+   say "Calculating PI with \n  $n slices";
   
    my DateTime $start = DateTime.now;  
    my Num $mypi = calcpi($n);
