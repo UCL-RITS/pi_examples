@@ -1,5 +1,20 @@
 #!/usr/bin/env julia
 
+function _picalc(numsteps)
+
+  slice = 1.0/numsteps
+
+  sum = 0.0
+
+  @simd for i = 1:numsteps
+    x = (i - 0.5) * slice
+    sum = sum + (4.0/(1.0 + x^2))
+  end
+
+  return sum * slice
+
+end
+
 function picalc(numsteps)
 
   println("Calculating PI using:")
@@ -7,32 +22,23 @@ function picalc(numsteps)
   println("  ", 1, " worker(s)")
   start = time()
 
-  sum = 0.0
-  slice = 1.0/numsteps
+  mypi = _picalc(numsteps)
 
-  sum = 0.0
-
-  for i = 1:numsteps
-    x = (i - 0.5) * slice
-    sum = sum + (4.0/(1.0 + x^2))
-  end
-
-  mypi = sum * slice
-
-  stop = time()
-
-  elapsed = (stop - start)
+  elapsed = time() - start
 
   println("Obtained value of PI: ", mypi)
   println("Time taken: ", elapsed, " seconds")
 
 end
 
-numsteps=1000000000
-
-if length(ARGS) > 0
-  numsteps = parse(Int, ARGS[1])
+numsteps = if length(ARGS) > 0
+    parse(Int, ARGS[1])
+else
+    1_000_000_000
 end
 
-picalc(numsteps)
+# Warm up kernel
+_picalc(10)
 
+# Run the full example
+picalc(numsteps)
