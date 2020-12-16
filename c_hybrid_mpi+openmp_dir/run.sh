@@ -2,4 +2,4 @@
 
 make clean
 make
-mpirun ./hybrid-pi
+mpirun ./hybrid_pi
