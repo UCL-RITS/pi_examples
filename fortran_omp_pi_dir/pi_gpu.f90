@@ -32,13 +32,18 @@ program pi_openmp
   s = 0d0
   step = 1.0d0 / num_steps
 
-! Specify that the loop be parallelised, offload to device.
+! Specify that the loop be parallelised, with summation of individual
+! threads' s values to yield overall sum. Specify that the variable
+! x is local to each thread.
 
-!$OMP TARGET TEAMS LOOP
+!$OMP TARGET 
+!$OMP TEAMS DISTRIBUTE PARALLEL DO PRIVATE(x) REDUCTION(+:s)
   do i = 1, num_steps
     x = (i - 0.5d0) * step
     s = s + 4.0d0 / (1.0d0 + x*x)
   end do
+!$OMP END TEAMS DISTRIBUTE PARALLEL DO
+!$OMP END TARGET
 
 ! Evaluate PI from the final sum value, and stop the clock
 
