@@ -1,0 +1,15 @@
+EXEC=pi_gpu
+
+FC=nvfortran
+
+FOPT=$(FCFLAGS) -O2 -mp=gpu
+
+$(EXEC): pi_gpu.f90
+	$(FC) $(FOPT) -o $(EXEC) pi_gpu.f90
+
+
+clean:
+	rm -f *.o $(EXEC)
+
+.PHONY: clean
+
