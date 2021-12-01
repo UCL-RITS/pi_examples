@@ -6,7 +6,7 @@ cobol_pi: Makefile cobol_pi.cbl
 	cobc -g -x -debug cobol_pi.cbl
 
 clean:
-	-rm -f cobol_pi cobol_pi.c cobol_pi.h cobol_pi.l.h cobol_pi.c.h cobol_pi.c.l.h
+	-rm -f cobol_pi cobol_pi.c cobol_pi.h cobol_pi.l.h cobol_pi.c.h cobol_pi.c.l.h cobol_pi.i
 
 .PHONY: clean
 
