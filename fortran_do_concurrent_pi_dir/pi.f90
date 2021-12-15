@@ -31,7 +31,7 @@ program pi
   s = 0d0
   step = 1.0d0 / num_steps
 
-  do concurrent (i = 1; num_steps)
+  do concurrent (i = 1: num_steps)
     x = (i - 0.5d0) * step
     s = s + 4.0d0 / (1.0d0 + x*x)
   end do
