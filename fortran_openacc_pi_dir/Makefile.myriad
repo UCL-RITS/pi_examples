@@ -2,8 +2,8 @@ EXEC=pi
 
 FC=nvfortran
 
-FOPT=-O2 -mp -acc -ta=tesla:cc60,cc70,time,multicore -Minfo=accel
-FHOST=-O2 -mp -acc -ta=tesla:cc60,cc70,time,host -Minfo=accel
+FOPT=-O2 -mp -acc -ta=tesla:cc80,cc60,cc70,time,multicore -Minfo=accel
+FHOST=-O2 -mp -acc -ta=tesla:cc80,cc60,cc70,time,host -Minfo=accel
 
 default: $(EXEC) pi_big pi_host
 
