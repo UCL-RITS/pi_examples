@@ -24,7 +24,6 @@ function picalc(numsteps)
   println("Calculating PI using:")
   println("  ", numsteps, " slices")
   println("  ", np, " worker(s)")
-  temp = work(1,1)
   temp = work(numsteps,np)
   start = time()
 
@@ -35,7 +34,7 @@ function picalc(numsteps)
   elapsed = (stop - start)
 
   println("Obtained value of PI: ", mypi)
-  println("Time taken: ", elapsed, " seconds")
+  println("Time taken: ", round(elapsed, digits=3), " seconds")
 
 end
 
@@ -45,6 +44,12 @@ if length(ARGS) > 0
   numsteps = parse(Int, ARGS[1])
 end
 
+# Warm things up
+print("  Warming up...")
+warms = time()
+temp = work(1,1)
+warmt = time() - warms
+println("done. [", round(warmt, digits=3), "s]\n")
 
 picalc(numsteps)
 

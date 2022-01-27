@@ -27,7 +27,7 @@ function picalc(numsteps)
   elapsed = (stop - start)
 
   println("Obtained value of PI: ", mypi)
-  println("Time taken: ", elapsed, " seconds")
+  println("Time taken: ", round(elapsed, digits=3), " seconds")
 
 end
 
