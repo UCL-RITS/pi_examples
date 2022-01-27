@@ -63,7 +63,7 @@ print("  Warming up...")
 warms = time()
 dummy = _picalc(1,10)
 warmt = time() - warms
-println("done. Warm-up took ", warmt, " seconds.\n")
+println("done. [", warmt, "s]\n")
 
 # Run the full example
 picalc(numsteps,threads)
