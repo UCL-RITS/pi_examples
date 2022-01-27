@@ -9,7 +9,7 @@ using CUDA
 # Actual CUDA kernel.
 function pichunk!(threads, n, result)
   rank=threadIdx().x
-  lower=floor((rank-1) * n/threads)
+  lower=floor((rank-1) * n/threads) + 1
   upper=floor((rank) * n/threads)
   step = 1.0/n
   for i=lower:upper
