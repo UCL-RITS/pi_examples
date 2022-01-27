@@ -41,7 +41,7 @@ function picalc(numsteps, nthr)
   elapsed = time() - start
 
   println("Obtained value of PI: ", mypi)
-  println("Time taken: ", elapsed, " seconds")
+  println("Time taken: ", round(elapsed, digits=3), " seconds")
 
 end
 
@@ -63,7 +63,7 @@ print("  Warming up...")
 warms = time()
 dummy = _picalc(1,10)
 warmt = time() - warms
-println("done. [", warmt, "s]\n")
+println("done. [", round(warmt, digits=3), "s]\n")
 
 # Run the full example
 picalc(numsteps,threads)
