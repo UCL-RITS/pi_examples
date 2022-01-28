@@ -17,7 +17,7 @@ function picalc(numsteps)
 
     println("Calculating PI using:")
     println("  ", numsteps, " slices")
-#    println("  ", nthreads(), " thread(s)")
+    println("  1 gpu")
 
     start = time()
     mypi = _picalc(numsteps)
