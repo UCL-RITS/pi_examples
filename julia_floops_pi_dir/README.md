@@ -1,9 +1,9 @@
-# Julia floops implementations
+# Julia FLoops implementations
 
 This folder contains two implementations in Julia which use the external [`FLoops.jl`](https://github.com/JuliaFolds/FLoops.jl), to implement the parallel reduction:
 
 * `pi_floops.jl` uses threads
-* `pi_floops_cuda.jl` uses a Cuda based GPU if available.
+* `pi_floops_gpu.jl` uses a Cuda based GPU if available.
 
 To run the first example, use
 ```
