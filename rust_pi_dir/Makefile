@@ -1,7 +1,7 @@
 RC = rustc
 
 pi: pi.rs Makefile
-	rustc pi.rs
+	rustc -O pi.rs
 
 clean:
 	rm -f pi
