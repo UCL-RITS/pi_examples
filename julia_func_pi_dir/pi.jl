@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 
-p(n) = (reduce(+,map((x->(4/(1+(x*x)))),(0.5/n):(1/n):1))/n)
+p(n) = mapreduce(x -> (4 / (1 + (x * x))), +, (0.5 / n):(1 / n):1) / n
 
 function picalc(numsteps)
 
@@ -20,15 +20,22 @@ function picalc(numsteps)
   elapsed = (stop - start)
 
   println("Obtained value of PI: ", mypi)
-  println("Time taken: ", elapsed, " seconds")
+  println("Time taken: ", round(elapsed; digits=3), " seconds")
 
 end
 
-numsteps=50000000
-
-if length(ARGS) > 0
-  numsteps = parse(Int, ARGS[1])
+const numsteps = if length(ARGS) > 0
+    parse(Int, ARGS[1])
+else
+    1_000_000_000
 end
 
+# Warm up kernel
+print("  Warming up...")
+warms = time()
+p(10)
+warmt = time() - warms
+println("done. [", round(warmt; digits=3), "s]\n")
+
+# Run the full example
 picalc(numsteps)
-
