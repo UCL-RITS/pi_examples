@@ -14,7 +14,7 @@ fn main() {
     let my_pi: f64;
     let arguments = std::env::args();
 
-    num_steps = 100000000;
+    num_steps = 1000000000;
 
 // Check OMP_NUM_THREADS.  If it doesn't exist, default to threads = 1.
     match env::var("OMP_NUM_THREADS") {
