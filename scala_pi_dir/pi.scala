@@ -45,14 +45,17 @@ val res0: String = version 2.13.6
                                                                                
 scala> 
 
+   This means our strategy has to be "does the first argument exist and does
+   it end in ".classname" aka ".pi""? to determine the format of args.
+
 */
     def two_or_three(args: Array[String]): Int = {
         if (args.length == 0) {
-            return 2
+            return 2    // For Scala 3 args.length is never 0.
         } else if ((args.length >= 1) && (args(0).endsWith(".pi") == false)) {
-            return 2
+            return 2    // If args.length >=1 is the first arg not class name?
         } else {
-            return 3
+            return 3    // If it is the class name we are in three.
         }
     }
 
@@ -70,7 +73,7 @@ scala>
             if (args.length >= 1) {
                 n = Integer.parseInt(args(0))
             }
-        } else if (major_version == 3) {                            // Version 3+, insanity
+        } else if (major_version == 3) {    // Version 3+, insanity
             if (args.length > 1) {
                 n = Integer.parseInt(args(1))
             }
