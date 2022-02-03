@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 make
-scala pi $1
+scala calcpi.pi $1

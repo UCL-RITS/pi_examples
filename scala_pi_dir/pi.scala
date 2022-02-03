@@ -1,3 +1,5 @@
+package calcpi
+
 object pi extends App {
     var n = 500000000
 
