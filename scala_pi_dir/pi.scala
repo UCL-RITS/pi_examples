@@ -15,7 +15,7 @@ object pi {
         
     }
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]) = {
         var n = 500000000
 
         if (args.length == 1) {
