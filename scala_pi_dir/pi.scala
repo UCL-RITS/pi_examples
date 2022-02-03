@@ -31,7 +31,7 @@ object pi {
    so:
 
    scala calcpi.pi 10000     -> ["calcpi.pi","10000","10000"]
-   scala calcpi.pi           -> ["calclpi.pi"]
+   scala calcpi.pi           -> ["calcpi.pi"]
    scala calcpi.pi 10000 red -> ["calcpi.pi","10000","10000","red","red"]
 
    As a bonus horror, Scala 3 reports its version as version 2.
