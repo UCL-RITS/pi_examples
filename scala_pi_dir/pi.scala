@@ -18,8 +18,8 @@ object pi {
     def main(args: Array[String]) = {
         var n = 500000000
 
-        if (args.length == 1) {
-            n = Integer.parseInt(args(0))
+        if (args.length >= 1) {
+            n = Integer.parseInt(args(args.length-1))
         }
 
         println("Calculating PI using:")
