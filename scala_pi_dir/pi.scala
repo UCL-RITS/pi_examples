@@ -15,13 +15,6 @@ object pi {
         
     }
 
-/*
-   This is the portable way to do a main() between Scala 2 + 3 but not as 
-   portable as sanity would demand.
- */
-    def main(args: Array[String]) = {
-        var n = 500000000
-
 /*    
    Scala 3 is a menace.
    So it used to be (Scala 2.x) args would be just arguments, in order as 
@@ -41,19 +34,49 @@ object pi {
    scala calcpi.pi           -> ["calclpi.pi"]
    scala calcpi.pi 10000 red -> ["calcpi.pi","10000","10000","red","red"]
 
+   As a bonus horror, Scala 3 reports its version as version 2.
+
+Myriad [login12] scala_pi_dir :) > scala
+Welcome to Scala 3.1.1 (17.0.2, Java OpenJDK 64-Bit Server VM).
+Type in expressions for evaluation. Or try :help.
+                                                                               
+scala> util.Properties.versionString
+val res0: String = version 2.13.6
+                                                                               
+scala> 
+
 */
+    def two_or_three(args: Array[String]): Int = {
+        if (args.length == 0) {
+            return 2
+        } else if ((args.length >= 1) && (args(0).endsWith(".pi") == false)) {
+            return 2
+        } else {
+            return 3
+        }
+    }
 
-        // Get version number
-        val major_version = Integer.parseInt(util.Properties.versionNumberString.split("\\.")(0))
+/*
+   This is the portable way to do a main() between Scala 2 + 3 but not as 
+   portable as sanity would demand.
+ */
+    def main(args: Array[String]) = {
+        var n = 500000000
 
-        if (major_version <= 2) {           // Version 2 and below, sanity
+
+        val major_version = two_or_three(args)
+
+        if (major_version == 2) {           // Version 2 and below, sanity
             if (args.length >= 1) {
                 n = Integer.parseInt(args(0))
             }
-        } else {                            // Version 3+, insanity
+        } else if (major_version == 3) {                            // Version 3+, insanity
             if (args.length > 1) {
                 n = Integer.parseInt(args(1))
             }
+        } else {
+            println(">>> WARNING - Could not determine Scala version.")
+            println(">>>           Argument parsing disabled.")
             
         }
 
