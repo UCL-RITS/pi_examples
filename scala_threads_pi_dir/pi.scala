@@ -1,6 +1,6 @@
 package calcpi
 
-class calc_thread(val n: Int,val begin: Int,val finish: Int) extends Runnable {
+class calc_thread(val n: Long,val begin: Long,val finish: Long) extends Runnable {
 
     var psum = 0.0d
     val step = 1d/n
@@ -17,7 +17,7 @@ class calc_thread(val n: Int,val begin: Int,val finish: Int) extends Runnable {
 
 object pi {
 
-    def estimate_pi(n: Int, threads: Int): Double = {
+    def estimate_pi(n: Long, threads: Int): Double = {
 
         var thread_array = Array.ofDim[Thread](threads)
         var calc_array = Array.ofDim[calc_thread](threads)
@@ -95,18 +95,18 @@ scala>
    portable as sanity would demand.
  */
     def main(args: Array[String]) = {
-        var n = 500000000
+        var n = 500000000l
         var threads = 1
 
         val major_version = two_or_three(args)
 
         if (major_version == 2) {           // Version 2 and below, sanity
             if (args.length >= 1) {
-                n = Integer.parseInt(args(0))
+                n = args(0).toLong
             }
         } else if (major_version == 3) {    // Version 3+, insanity
             if (args.length > 1) {
-                n = Integer.parseInt(args(1))
+                n = args(1).toLong
             }
         } else {
             println(">>> WARNING - Could not determine Scala version.")
@@ -116,11 +116,11 @@ scala>
 
         if (major_version == 2) {           // Version 2 and below, sanity
             if (args.length >= 2) {
-                threads = Integer.parseInt(args(1))
+                threads = args(1).toInt
             }
         } else if (major_version == 3) {    // Version 3+, insanity
             if (args.length > 3) {
-                threads = Integer.parseInt(args(3))
+                threads = args(3).toInt
             }
         } else {
             println(">>> WARNING - Could not determine Scala version.")
@@ -130,7 +130,7 @@ scala>
 
         println("Calculating PI using:")
         println("  " + n + " slices")
-        println("  " + threads + " threads")
+        println("  " + threads + " thread(s)")
 
         val start = System.currentTimeMillis();
 

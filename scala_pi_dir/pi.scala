@@ -2,11 +2,11 @@ package calcpi
 
 object pi {
 
-    def estimate_pi(n: Int): Double = {
+    def estimate_pi(n: Long): Double = {
         var psum = 0.0d;
         val step = 1d/n;
         
-        for (i <-  1 to n) {
+        for (i <- 1l to n) {
             var x = (i - 0.5d) * step
             psum = psum + 4d/(1d + (x * x))
         } 
@@ -64,18 +64,18 @@ scala>
    portable as sanity would demand.
  */
     def main(args: Array[String]) = {
-        var n = 500000000
+        var n = 500000000l
 
 
         val major_version = two_or_three(args)
 
         if (major_version == 2) {           // Version 2 and below, sanity
             if (args.length >= 1) {
-                n = Integer.parseInt(args(0))
+                n = args(0).toLong
             }
         } else if (major_version == 3) {    // Version 3+, insanity
             if (args.length > 1) {
-                n = Integer.parseInt(args(1))
+                n = args(1).toLong
             }
         } else {
             println(">>> WARNING - Could not determine Scala version.")
