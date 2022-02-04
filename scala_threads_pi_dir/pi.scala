@@ -5,7 +5,7 @@ class calc_thread(val n: Long,val begin: Long,val finish: Long) extends Runnable
     var psum = 0.0d
     val step = 1d/n
 
-    override def run() {
+    override def run() = {
         for (i <- begin to finish) {
             var x = (i - 0.5d) * step
             psum = psum + 4d/(1d + (x * x))
