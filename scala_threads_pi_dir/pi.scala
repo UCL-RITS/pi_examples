@@ -92,34 +92,16 @@ scala>
         var n = 500000000L
         var threads = 1
 
-        val major_version = two_or_three()
+        val major_version_arg_shift = two_or_three() - 2
 
-        if (major_version == 2) {           // Version 2 and below, sanity
-            if (args.length >= 1) {
-                n = args(0).toLong
-            }
-        } else if (major_version == 3) {    // Version 3+, insanity
-            if (args.length > 1) {
-                n = args(1).toLong
-            }
-        } else {
-            println(">>> WARNING - Could not determine Scala version.")
-            println(">>>           Argument parsing disabled.")
-            
+        if (args.length > major_version_arg_shift) {
+            n = args(major_version_arg_shift).toLong
         }
 
-        if (major_version == 2) {           // Version 2 and below, sanity
-            if (args.length >= 2) {
-                threads = args(1).toInt
-            }
-        } else if (major_version == 3) {    // Version 3+, insanity
-            if (args.length > 3) {
-                threads = args(2).toInt
-            }
-        } else {
-            println(">>> WARNING - Could not determine Scala version.")
-            println(">>>           Argument parsing disabled.")
-            
+        // if 2: (2*major_version_arg_shift) + 1) == 1
+        // if 3: (2*major_version_arg_shift) + 1) == 3
+        if (args.length > (2*major_version_arg_shift) + 1) {
+            threads = args(major_version_arg_shift + 1).toInt
         }
 
         println("Calculating PI using:")

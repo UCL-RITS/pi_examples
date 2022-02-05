@@ -61,20 +61,10 @@ scala>
         var n = 500000000L
 
 
-        val major_version = two_or_three()
+        val major_version_arg_shift = two_or_three() - 2
 
-        if (major_version == 2) {           // Version 2 and below, sanity
-            if (args.length >= 1) {
-                n = args(0).toLong
-            }
-        } else if (major_version == 3) {    // Version 3+, insanity
-            if (args.length > 1) {
-                n = args(1).toLong
-            }
-        } else {
-            println(">>> WARNING - Could not determine Scala version.")
-            println(">>>           Argument parsing disabled.")
-            
+        if (args.length > major_version_arg_shift) {
+            n = args(major_version_arg_shift).toLong
         }
 
         println("Calculating PI using:")
