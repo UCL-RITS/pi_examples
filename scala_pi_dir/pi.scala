@@ -45,18 +45,12 @@ val res0: String = version 2.13.6
                                                                                
 scala> 
 
-   This means our strategy has to be "does the first argument exist and does
-   it end in ".classname" aka ".pi""? to determine the format of args.
+   This means our strategy has to be does this have the class for 
+   dotty (Scala 3 compiler) properties?
 
 */
-    def two_or_three(args: Array[String]): Int = {
-        if (args.length == 0) {
-            return 2    // For Scala 3 args.length is never 0.
-        } else if ((args.length >= 1) && (args(0).endsWith(".pi") == false)) {
-            return 2    // If args.length >=1 is the first arg not class name?
-        } else {
-            return 3    // If it is the class name we are in three.
-        }
+    def two_or_three(): Int = {
+        if (util.Try(Class.forName("dotty.tools.dotc.config.Properties")).isSuccess) 3 else 2
     }
 
 /*
@@ -67,7 +61,7 @@ scala>
         var n = 500000000l
 
 
-        val major_version = two_or_three(args)
+        val major_version = two_or_three()
 
         if (major_version == 2) {           // Version 2 and below, sanity
             if (args.length >= 1) {
