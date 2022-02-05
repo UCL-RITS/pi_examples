@@ -5,10 +5,13 @@ object pi {
     def estimate_pi(n: Long): Double = {
         var psum = 0.0d;
         val step = 1d/n;
-        
-        for (i <- 1L to n) {
+
+        // We can't loop over longs with for :(
+        var i = 1L        
+        while (i <= n) {
             var x = (i - 0.5d) * step
             psum = psum + 4d/(1d + (x * x))
+            i = i + 1
         } 
         
         psum * step
