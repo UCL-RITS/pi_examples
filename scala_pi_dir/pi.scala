@@ -6,7 +6,7 @@ object pi {
         var psum = 0.0d;
         val step = 1d/n;
         
-        for (i <- 1l to n) {
+        for (i <- 1L to n) {
             var x = (i - 0.5d) * step
             psum = psum + 4d/(1d + (x * x))
         } 
@@ -58,7 +58,7 @@ scala>
    portable as sanity would demand.
  */
     def main(args: Array[String]) = {
-        var n = 500000000l
+        var n = 500000000L
 
 
         val major_version = two_or_three()
