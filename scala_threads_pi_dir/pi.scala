@@ -42,8 +42,6 @@ object pi {
         var estimate = 0.0d
         for (i <- 0 to (threads - 1)) {
            thread_array(i).join()
-        }
-        for (i <- 0 to (threads - 1)) {
            estimate = estimate + calc_array(i).psum
         }
         estimate
