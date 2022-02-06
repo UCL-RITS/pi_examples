@@ -20,30 +20,31 @@ class calc_thread(val n: Long,val begin: Long,val finish: Long) extends Runnable
 
 object pi {
 
-    def estimate_pi(n: Long, threads: Int): Double = {
+    def estimate_pi(n: Long, threads: Int, debug: Boolean): Double = {
 
         var thread_array = Array.ofDim[Thread](threads)
         var calc_array = Array.ofDim[calc_thread](threads)
         val perthread = n/threads
         val leftover = n - (threads * perthread)
 
-        for (i <- 1 to threads) {
-           var begin = (i - 1) * perthread
-           var finish = (i * perthread) - 1
-           if (i == threads) {
+        for (i <- 0 to (threads - 1)) {
+           var begin = i * perthread
+           var finish = ((i + 1) * perthread) - 1
+           if (i == (threads - 1)) {
                finish = finish + leftover
            }
-           calc_array(i-1) = new calc_thread(n, begin, finish)
-           thread_array(i-1) = new Thread(calc_array(i-1))
-           thread_array(i-1).start()
+           if (debug) println("Thread " + i + ": Start: " + begin + " Finish: " + finish)
+           calc_array(i) = new calc_thread(n, begin, finish)
+           thread_array(i) = new Thread(calc_array(i))
+           thread_array(i).start()
         }
 
         var estimate = 0.0d
-        for (i <- 1 to threads) {
-           thread_array(i-1).join()
+        for (i <- 0 to (threads - 1)) {
+           thread_array(i).join()
         }
-        for (i <- 1 to threads) {
-           estimate = estimate + calc_array(i-1).psum
+        for (i <- 0 to (threads - 1)) {
+           estimate = estimate + calc_array(i).psum
         }
         estimate
         
@@ -94,6 +95,7 @@ scala>
     def main(args: Array[String]) = {
         var n = 500000000L
         var threads = 1
+        var debug = false
 
         val major_version_arg_shift = two_or_three() - 2
 
@@ -107,13 +109,19 @@ scala>
             threads = args(major_version_arg_shift + 1).toInt
         }
 
+        // if 2: (3*major_version_arg_shift) + 2) == 2
+        // if 3: (3*major_version_arg_shift) + 2) == 5
+        if (args.length > (3*major_version_arg_shift) + 2) {
+            debug = args(major_version_arg_shift + 2).toBoolean
+        }
+
         println("Calculating PI using:")
         println("  " + n + " slices")
         println("  " + threads + " thread(s)")
 
         val start = System.currentTimeMillis();
 
-        var mypi = estimate_pi(n, threads)
+        var mypi = estimate_pi(n, threads, debug)
         
         val stop = System.currentTimeMillis();
         val difference = stop - start;
