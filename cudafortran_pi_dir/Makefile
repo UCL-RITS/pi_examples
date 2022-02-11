@@ -2,7 +2,7 @@ EXEC=pi
 
 FC=nvfortran
 
-FOPT=-O2 -Minfo=accel -cuda -gpu=cuda11.5
+FOPT=-O2 -Minfo=accel -cuda -gpu=cuda11.0
 
 default: $(EXEC) 
 
