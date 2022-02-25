@@ -25,7 +25,7 @@
            
            PERFORM VARYING StepNumber FROM 0 BY 1 
              UNTIL StepNumber >= NumberOfSteps 
-             COMPUTE X ROUNDED = (StepNumber - 0.5) * StepSize
+             COMPUTE X ROUNDED = (StepNumber + 0.5) * StepSize
              COMPUTE ThisSlice ROUNDED = (4 / (1 + X*X))
              ADD ThisSlice to TotalSum
            END-PERFORM
