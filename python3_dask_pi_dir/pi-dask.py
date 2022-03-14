@@ -36,7 +36,7 @@ if __name__=='__main__':
 
         start = time.time()
 
-        client = Client(processes=False, n_workers=workers)  # start local workers as threads
+        client = Client(processes=True, n_workers=workers)  # start local workers as threads
 
         stop = time.time()
 
