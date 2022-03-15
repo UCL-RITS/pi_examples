@@ -5,7 +5,7 @@ using Base.Threads, FLoops
 function _picalc(numsteps)
     slice = 1.0 / numsteps
 
-    @floop @simd for i = 1:numsteps
+    @floop ThreadedEx(;simd=true, basesize=numsteps÷1000) for i = 1:numsteps
         x = (i - 0.5) * slice
         @reduce(sum += 4.0 / (1.0 + x ^ 2))
     end
