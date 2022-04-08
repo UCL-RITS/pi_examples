@@ -10,7 +10,7 @@ end
 nt = maxNumCompThreads;
 
 disp(sprintf('Calculating PI with:\n  %d slices', n));
-disp(sprintf('  GPU'));
+disp(sprintf(gpuDevice.Name));
 
 start = tic;
 
