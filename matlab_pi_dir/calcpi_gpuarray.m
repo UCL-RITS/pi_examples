@@ -10,7 +10,7 @@ end
 nt = gpuDevice.Name
 
 disp(sprintf('Calculating PI with:\n  %d slices', n));
-disp(sprintf('  GPU: %s', nt);
+disp(sprintf('  GPU: %s', nt));
 
 start = tic;
 
