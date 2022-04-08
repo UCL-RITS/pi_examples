@@ -12,14 +12,21 @@ nt = maxNumCompThreads;
 disp(sprintf('Calculating PI with:\n  %d slices', n));
 disp(sprintf('  %d thread(s)', nt));
 
-start = tic;
+alloc = tic;
 
 l = ones([1,n]);
 i = 0:1:n-1;
+
+stopalloc = toc(alloc);
+
+start = tic;
+
 s = (4* l)./(l + (((i + 0.5)./n).^2));
 p = sum(s)/n;
 
 stop = toc(start);
 
 disp(sprintf('Obtained value of PI: %g', p));
-disp(sprintf('Time taken: %g seconds', stop));
+disp(sprintf('Allocation time taken: %g seconds', stopalloc));
+disp(sprintf('Loop time taken: %g seconds', stop));
+disp(sprintf('Total time taken: %g seconds', stop + stopalloc));
