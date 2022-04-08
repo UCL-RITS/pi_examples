@@ -7,10 +7,10 @@ if exist('n', 'var') == 0
   n = 1000;
 end
 
-nt = maxNumCompThreads;
+nt = gpuDevice.Name
 
 disp(sprintf('Calculating PI with:\n  %d slices', n));
-disp(sprintf(gpuDevice.Name));
+disp(sprintf('  GPU: %s', nt);
 
 start = tic;
 
