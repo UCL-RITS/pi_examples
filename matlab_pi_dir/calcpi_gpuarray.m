@@ -7,7 +7,8 @@ if exist('n', 'var') == 0
   n = 1000;
 end
 
-nt = gpuDevice.Name
+D = gpuDevice
+nt = D.Name
 
 disp(sprintf('Calculating PI with:\n  %d slices', n));
 disp(sprintf('  GPU: %s', nt));
