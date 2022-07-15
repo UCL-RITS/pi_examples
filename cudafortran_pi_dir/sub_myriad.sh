@@ -8,7 +8,7 @@
 module purge
 module load rcps-core
 module load personal-modules
-module load compilers/nvhpc
+module load compilers/nvidia/hpc-sdk
 
 hostname
 
