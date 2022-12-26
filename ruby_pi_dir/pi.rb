@@ -20,10 +20,29 @@ def calc_pi_t(n, start, stop, verbose)
   return total_sum * step
 end
 
+# This routine forks a new process that runs calc_pi_t
+def calc_pi_p(n, start, stop, verbose)
+  read, write = IO.pipe
+
+  pid = fork do
+    read.close
+    p = calc_pi_t(n, start, stop, verbose)
+    write.puts(p)
+    exit(0)
+  end
+
+  write.close
+  p = read.read.to_f
+  Process.wait(pid)
+  return p
+end
+
 # calc_pi takes a number of slices and a number of threads.
 def calc_pi(n, num_threads, verbose)
   p = 0.0
 
+  # Although we are using processes, wrap their handlers in threads so comms
+  # is separated out.
   threads = [num_threads]               # Array of threads.
   per_thread = n / num_threads          # Integer number of slices per thread.
   debug(verbose,"Slices per thread: " + per_thread.to_s)
@@ -45,7 +64,7 @@ def calc_pi(n, num_threads, verbose)
     end
     debug(verbose,"lower: " + lower[i].to_s + " upper: " + upper[i].to_s)
     threads[i] = Thread.new {
-      Thread.current["local_p"] = calc_pi_t(n,lower[i],upper[i],verbose)
+      Thread.current["local_p"] = calc_pi_p(n,lower[i],upper[i],verbose)
     }
   end
   
@@ -80,7 +99,7 @@ if ENV.has_key?("PI_DEBUG")
   end
 end
 
-puts "Calculating PI with:\n  " + n.to_s + " slices\n  " + num_threads.to_s + " thread(s)"
+puts "Calculating PI with:\n  " + n.to_s + " slices\n  " + num_threads.to_s + " process(es)"
 
 start = Time.now
 p = calc_pi(n,num_threads, verbose)
