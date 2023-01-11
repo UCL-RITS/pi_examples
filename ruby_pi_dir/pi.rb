@@ -27,12 +27,13 @@ def calc_pi_p(n, start, stop)
   pid = fork do
     read.close
     p = calc_pi_t(n, start, stop)
-    write.puts(p)
+    p_serialised = Marshal.dump(p)
+    write.puts(p_serialised)
     exit(0)
   end
 
   write.close
-  p = read.read.to_f
+  p = Marshal.load(read.read)
   Process.wait(pid)
   return p
 end
