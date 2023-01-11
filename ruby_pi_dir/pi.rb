@@ -27,14 +27,18 @@ def calc_pi_p(n, start, stop)
   pid = fork do
     read.close
     p = calc_pi_t(n, start, stop)
-    # pack converts an array to binary, 'D' means double prec, native worder
+    # pack converts an /array/ to binary.
+    # we're doing this to preserve precision and avoid
+    # any issues with double -> string -> double.
+    # 'D' means "double precision, native format"
     p_binary = [p].pack('D')
+    debug("Binary representation of double value: " + p_binary.unpack('B*').first)
     write.puts(p_binary)
     exit(0)
   end
 
   write.close
-  p = read.read.unpack('D')[0]
+  p = read.read.unpack('D').first
   Process.wait(pid)
   return p
 end
