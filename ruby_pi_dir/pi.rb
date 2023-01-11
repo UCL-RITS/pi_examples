@@ -27,12 +27,14 @@ def calc_pi_p(n, start, stop)
   pid = fork do
     read.close
     p = calc_pi_t(n, start, stop)
-    write.puts(p)
+    # pack converts an array to binary, 'D' means double prec, native worder
+    p_binary = [p].pack('D')
+    write.puts(p_binary)
     exit(0)
   end
 
   write.close
-  p = read.read.to_f
+  p = read.read.unpack('D')[0]
   Process.wait(pid)
   return p
 end
