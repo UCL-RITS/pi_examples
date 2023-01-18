@@ -46,14 +46,17 @@ my_linker_flags = [my_compiler["openmp_flag"]]
 for a in my_compiler["opt_flags"]:
         my_linker_flags.append(a)
 
+# We have multiple files which is awkward.
+path_filters=[FindSourceFiles.Exclude("./"), FindSourceFiles.Include("pi.f90")]
+
 # Build a Fab config.
 config = BuildConfig(
-        project_label='Pi_Fortran_OpenMP',
+        project_label="Pi_Fortran_OpenMP",
         steps=[
-                GrabFolder(src='./fab-src'),  # We want a subset of the source files in cwd.
+                GrabFolder(src="./"),  # We want a subset of the source files in cwd.
                 FindSourceFiles(),
                 fortran_preprocessor(),
-                Analyse(root_symbol='pi_openmp'),
+                Analyse(root_symbol="pi_openmp"),
                 CompileFortran(compiler=my_compiler_name, common_flags=my_compile_flags),
                 LinkExe(linker=my_linker,flags=my_linker_flags),
         ]
