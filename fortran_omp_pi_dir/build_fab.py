@@ -3,7 +3,7 @@
 from fab.steps.analyse import Analyse
 from fab.steps.compile_fortran import CompileFortran
 from fab.build_config import BuildConfig
-from fab.steps.find_source_files import FindSourceFiles
+from fab.steps.find_source_files import FindSourceFiles,Include,Exclude
 from fab.steps.grab import GrabFolder
 from fab.steps.link import LinkExe
 from fab.steps.preprocess import fortran_preprocessor
@@ -47,7 +47,7 @@ for a in my_compiler["opt_flags"]:
         my_linker_flags.append(a)
 
 # We have multiple files which is awkward.
-path_filters=[FindSourceFiles.Exclude("./"), FindSourceFiles.Include("pi.f90")]
+path_filters=[Exclude("./"), Include("pi.f90")]
 
 # Build a Fab config.
 config = BuildConfig(
