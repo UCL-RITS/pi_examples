@@ -1,4 +1,4 @@
-program pi_openmp
+program pi_gpu
 
   use ISO_FORTRAN_ENV
 
@@ -55,5 +55,5 @@ program pi_openmp
   write(*,'(A,1F12.10,A)') "Obtained value of PI: ", mypi
   write(*,'(A,1F12.5,A)') "Time taken:           ",(stop-start), " seconds"
 
-end program pi_openmp
+end program pi_gpu
 
