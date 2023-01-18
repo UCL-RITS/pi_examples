@@ -47,7 +47,7 @@ for a in my_compiler["opt_flags"]:
         my_linker_flags.append(a)
 
 # We have multiple files which is awkward.
-path_filters=[Exclude("./"), Include("pi.f90")]
+path_filters=[Exclude("pi_gpu.f90"), Include("pi.f90")]
 
 # Build a Fab config.
 config = BuildConfig(
