@@ -54,7 +54,7 @@ config = BuildConfig(
         project_label="Pi_Fortran_OpenMP",
         steps=[
                 GrabFolder(src="./"),  # We want a subset of the source files in cwd.
-                FindSourceFiles(),
+                FindSourceFiles(path_filters=path_filters),
                 fortran_preprocessor(),
                 Analyse(root_symbol="pi_openmp"),
                 CompileFortran(compiler=my_compiler_name, common_flags=my_compile_flags),
