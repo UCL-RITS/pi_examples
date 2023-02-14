@@ -2,7 +2,7 @@
 
 import Foundation
 
-var num_steps: Int = 1000000000
+var num_steps: Int = 10000000
 
 if CommandLine.arguments.count == 2 {
     num_steps = Int(CommandLine.arguments[1])!;
@@ -19,7 +19,7 @@ var step: Double = 1.0/Double(num_steps)
 let start = Date()
 
 for i in 1...num_steps {
-    var x: Double = (Double(i) - 0.5) * step
+    let x: Double = (Double(i) - 0.5) * step
     total_sim += 4.0/(1.0+(x*x))
 }
 
