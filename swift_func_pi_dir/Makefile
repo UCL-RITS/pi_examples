@@ -2,7 +2,7 @@ EXEC=pi
 
 SC=swiftc
 
-SOPT=-Ounchecked
+SOPT=-Ounchecked -O
 
 $(EXEC): pi.swift
 	$(SC) $(SOPT) pi.swift
