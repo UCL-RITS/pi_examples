@@ -2,7 +2,7 @@
 
 import Foundation
 
-var num_steps: Int = 10000000
+var num_steps: Int = 10000000000
 
 if CommandLine.arguments.count == 2 {
     num_steps = Int(CommandLine.arguments[1])!;
