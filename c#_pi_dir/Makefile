@@ -1,8 +1,11 @@
 # Set compiler here.
-CSHARP=mcs
 
-pi.exe: pi.cs
-	$(CSHARP) pi.cs
+pi.exe: bin/c\#_pi_dir
+	ln -s "bin/c#_pi_dir" pi.exe
+
+bin/c\#_pi_dir:
+	dotnet build -o bin
 
 clean:
-	rm pi.exe
+	rm -f pi.exe
+	rm -rf obj bin
