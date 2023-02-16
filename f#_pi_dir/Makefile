@@ -1,8 +1,11 @@
 # Set compiler here.
-FSHARP=fsharpc
 
-pi.exe: pi.fs
-	$(FSHARP) pi.fs
-	chmod +x pi.exe
+pi.exe: bin/pi
+	ln -s "bin/pi" pi.exe
+
+bin/pi:
+	dotnet build -o bin
+
 clean:
-	rm pi.exe
+	rm -f pi.exe
+	rm -rf obj bin
