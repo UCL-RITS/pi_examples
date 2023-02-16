@@ -1,9 +1,11 @@
 # Set compiler here.
-VB=vbnc
 
-pi.exe: pi.vb
-	$(VB) pi.vb
-	chmod +x pi.exe
+pi.exe: bin/pi
+	ln -s "bin/pi" pi.exe
+
+bin/pi:
+	dotnet build -o bin
 
 clean:
-	rm pi.exe
+	rm -f pi.exe
+	rm -rf obj bin
