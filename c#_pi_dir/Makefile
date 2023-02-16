@@ -1,9 +1,9 @@
 # Set compiler here.
 
-pi.exe: bin/c\#_pi_dir
-	ln -s "bin/c#_pi_dir" pi.exe
+pi.exe: bin/pi
+	ln -s "bin/pi" pi.exe
 
-bin/c\#_pi_dir:
+bin/pi:
 	dotnet build -o bin
 
 clean:
