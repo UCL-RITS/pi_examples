@@ -83,7 +83,7 @@ class Program {
 
          for (long i = sta; i <= sto; i++){
             x = ((double)i + 0.5d) * step;
-            psub+= 4d/(1d + (x * x));
+            psub += 4d/(1d + (x * x));
          }
          DebugMessage(j + ": " + sta + " => " + sto + " == " + psub);
 
@@ -103,6 +103,5 @@ class Program {
       Console.WriteLine("Time taken: " + time + " seconds");
 
    }
-
 
 }
