@@ -1,9 +1,9 @@
 # Set compiler here.
 
 pi.exe: bin/pi
-	ln -s "bin/pi" pi.exe
+	ln -fs "bin/pi" pi.exe
 
-bin/pi:
+bin/pi: pi.vb
 	dotnet build -o bin
 
 clean:
