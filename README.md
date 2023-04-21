@@ -2,7 +2,7 @@
 
 These are intended as examples people can run to show how to run code from jobs, the terminal, or where ever else.
 
-We (UCL RITS) use some of these for cluster training, showing users how to run MPI jobs and demonstrating different parallelisation mechanisms and so on.
+We (UCL ARC) use some of these for cluster training, showing users how to run MPI jobs and demonstrating different parallelisation mechanisms and so on.
 
 The others are mostly just the result of learning a new thing, wanting to do something ridiculous, or just wondering what the performance would be like.
 
