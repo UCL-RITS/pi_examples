@@ -13,9 +13,9 @@ public:
     bool compute() {
         float sum = 0;
         unsigned start = __builtin_ipu_get_scount_l();
-        for (unsigned j=id * n; j <= (id + 1) * n - 1; j++) {
+        for (unsigned j=id * n; j < (id + 1) * n; j++) {
             float x = (j - 0.5f) * slice;
-            sum += 4 / (1 + x * x);
+            sum += 4.0f / (1.0f + x * x);
         }
         unsigned end = __builtin_ipu_get_scount_l();
         out[0] = sum;
