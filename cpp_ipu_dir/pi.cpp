@@ -37,16 +37,11 @@ int main(int argc, char **argv) {
 
     auto tile_clock_frequency = target.getTileClockFrequency();
 
-    unsigned ids[num_tiles];
-    for (size_t i=0; i<num_tiles; i++) {
-        ids[i] = i;
-    }
     std::vector<float> sums(num_tiles);
     std::vector<unsigned> cycles(num_tiles);
 
     graph.addCodelets({"codelets.cpp"}, "-O3");
 
-    Tensor input = graph.addConstant(UNSIGNED_INT, {num_tiles}, ids);
     Tensor output = graph.addVariable(FLOAT, {num_tiles}, "sums");
     Tensor cs = graph.addVariable(UNSIGNED_INT, {num_tiles}, "cycles");
 
@@ -54,11 +49,10 @@ int main(int argc, char **argv) {
 
     auto compute_set = graph.addComputeSet("Pi");
     for (size_t i = 0; i < num_tiles; i++) {
-        graph.setTileMapping(input[i], i);
         graph.setTileMapping(output[i], i);
         graph.setTileMapping(cs[i], i);
         auto vtx = graph.addVertex(compute_set, "VertexPi");
-        graph.connect(vtx["id"], input[i]);
+        graph.connect(vtx["id"], i);
         graph.connect(vtx["n"], n);
         graph.connect(vtx["slice"], slice);
         graph.connect(vtx["out"], output.slice(i, i+1));
