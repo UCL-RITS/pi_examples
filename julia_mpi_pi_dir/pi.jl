@@ -2,6 +2,8 @@ using MPI
 
 function picalc(numsteps, np, rank, comm)
 
+  limits = zeros(Int64, np + 1)
+
   if rank == 0
     println("Calculating PI using:")
     println("  ", numsteps, " slices")
@@ -14,11 +16,7 @@ function picalc(numsteps, np, rank, comm)
       counts[a] += 1
     end
 
-    limits = cumsum(counts)
-    prepend!(limits,[0])
-
-  else
-    limits = Array{Int64}(undef, np+1)
+    limits[2:np+1] = cumsum(counts)
   end 
 
   limits = MPI.bcast(limits, 0, comm)
