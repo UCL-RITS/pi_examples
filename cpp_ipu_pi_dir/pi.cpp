@@ -32,10 +32,10 @@ int main(int argc, char **argv) {
 
     auto num_tiles = target.getNumTiles();
     unsigned n = UINT32_MAX / num_tiles;
-    unsigned num_steps = num_tiles * n;
     if (argc > 1) {
-        num_steps = atol(argv[1]);
+        n = atol(argv[1]);
     }
+    unsigned num_steps = num_tiles * n;
     float slice = 1.0f / num_steps;
 
     auto tile_clock_frequency = target.getTileClockFrequency();
