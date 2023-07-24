@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
 	pr = False
 	if (len(sys.argv) > 3):
-		if sys.argv[3].lower() == "yes"
+		if sys.argv[3].lower() == "yes":
 			pr = True
 
 	estimate_pi(n, nd, pr)
