@@ -6,10 +6,10 @@ import sys
 
 @pmap
 def y(x):
-	return jax.numpy.float32(4.0)/(jax.numpy.float32(1.0) + (x**2))
+	return 4.0/(1.0 + (x**2))
 
 def estimate_pi(slices, ipus, prerun):
-	print(f"Estimating Pi with:\n  {slices} slices\n  {ipus} IPUs\n")
+	print(f"Estimating Pi with:\n  {slices} slices\n  {ipus} IPU(s)\n")
 	t1 = time.time()
 	x = jax.numpy.linspace(0, 1.0, slices, dtype=jax.numpy.float32).reshape((ipus,-1))
 	if prerun:
