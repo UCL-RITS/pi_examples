@@ -6,12 +6,12 @@ import sys
 
 @pmap
 def y(x):
-	return 4.0/(1.0 + (x**2))
+	return jax.numpy.float32(4.0)/(jax.numpy.float32(1.0) + (x**2))
 
 def estimate_pi(slices, ipus, prerun):
 	print(f"Estimating Pi with:\n  {slices} slices\n  {ipus} IPUs\n")
 	t1 = time.time()
-	x = jax.numpy.linspace(0, 1.0, slices).reshape((ipus,-1))
+	x = jax.numpy.linspace(0, 1.0, slices, dtype=jax.numpy.float32).reshape((ipus,-1))
 	if prerun:
 		p_temp = y(x)
 		t2 = time.time()
@@ -20,16 +20,17 @@ def estimate_pi(slices, ipus, prerun):
 
 	print(f"Estimated value of Pi: {p}")
 	if prerun:
-		print(f"Time taken in prerun: {t2 - t1} seconds.\nTime taken in computation: {t3 - t2} seconds.")
+		print(f"Time taken in prerun: {t2 - t1} seconds.\nTime taken in computation: {t3 - t2} seconds.\n")
 	else:
-		print(f"Time taken: {t3 - t1} seconds.")
+		print(f"Time taken: {t3 - t1} seconds.\n")
 
 if __name__ == "__main__":
 	n = 1600000
 	if (len(sys.argv) > 1):
 		n = int(sys.argv[1])
 
-	nd = len(jax.devices())
+	#nd = len(jax.devices())
+	nd = 1
 	if (len(sys.argv) > 2):
 		nd = int(sys.argv[2])
 
