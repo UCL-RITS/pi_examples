@@ -29,7 +29,7 @@ if __name__ == "__main__":
 	if (len(sys.argv) > 1):
 		n = int(sys.argv[1])
 
-	nd = len(jax.devices)
+	nd = len(jax.devices())
 	if (len(sys.argv) > 2):
 		nd = int(sys.argv[2])
 
