@@ -1,5 +1,5 @@
 CXX=nvc++
-CXXFLAGS=-std=c++11 -O2 -acc --ta=tesla:cc80 -Minfo=accel calculate_pi_acc.cpp
+CXXFLAGS=-std=c++11 -O2 -acc -ta=tesla:cc80 -Minfo=accel calculate_pi_acc.cpp
 EXEC=calculate_pi
 
 $(EXEC): calculate_pi.o
