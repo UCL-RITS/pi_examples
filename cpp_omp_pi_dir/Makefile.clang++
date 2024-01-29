@@ -3,7 +3,7 @@ EXEC=pi.clang++
 $(EXEC): calculate_pi.o
 	clang++ $(CXXFLAGS) -fopenmp -O3 -o $(EXEC) calculate_pi.o
 
-calculate_pi.o: calculate_pi.cpp timer.hpp 
+calculate_pi.o: calculate_pi.cpp 
 	clang++ $(CXXFLAGS) -fopenmp -O3 -c calculate_pi.cpp -o $@
 
 clean:

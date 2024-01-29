@@ -2,9 +2,10 @@
 #include <cstdlib>
 #include <limits>
 #include <omp.h>
-#include "timer.hpp"
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 int main( int argc, char **argv ) {
    long i, num_steps = 1000000000;
@@ -17,15 +18,14 @@ int main( int argc, char **argv ) {
    }
 
    double step, x, sum, pi;
-   Timer timer;
    
    cout << "Calculating PI using:" << endl <<
            "  " << num_steps << " slices" << endl <<
            "  1 process" << endl <<
            "  " << thread_count << " threads" << endl;
    
-   timer.start();
-   
+   auto start = high_resolution_clock::now();
+
    sum = 0.0;
    step = 1.0 / num_steps;
 
@@ -37,10 +37,11 @@ int main( int argc, char **argv ) {
 
    pi = sum * step;
 
-   timer.stop();
+   auto stop = high_resolution_clock::now();
+   auto duration_s = duration<double>(stop - start).count();
 
    cout << "Obtained value for PI: " << pi << endl <<
-           "Time taken: " << timer.duration() << " seconds" << endl;
+           "Time taken: " << duration_s << " seconds" << endl;
 
    return 0;
 }
