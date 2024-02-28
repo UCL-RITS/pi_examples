@@ -1,0 +1,13 @@
+EXEC=pi
+
+FC=nvfortran
+
+FOPT=-O2 -mp -acc -gpu=ccnative -Minfo=accel
+
+default: $(EXEC) pi_big pi_host
+
+$(EXEC): pi.f90 Makefile.nvhpc Makefile
+	$(FC) $(FOPT) -o $(EXEC) pi.f90
+
+
+.PHONY: default
