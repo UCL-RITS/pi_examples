@@ -1,4 +1,4 @@
-default: myriad
+default: nvhpc
 
 help:
 	@echo ''
