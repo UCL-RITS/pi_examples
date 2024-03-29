@@ -1,4 +1,3 @@
-
 fun calc_pi(n_slices: Long): Double {
 	val step: Double = 1.0/n_slices.toDouble()
 	var psum: Double = 0.0
@@ -23,7 +22,6 @@ fun main(args: Array<String>) {
 	val start = System.currentTimeMillis()
 	val p: Double = calc_pi(n_slices)
 	val elapsed: Double = (System.currentTimeMillis() - start)/1000.0
-	
 	
 	print("Estimated value of π: $p\n")
 	print("Time taken: $elapsed seconds\n")
