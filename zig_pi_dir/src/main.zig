@@ -16,7 +16,7 @@ pub fn main() !void {
 	// "definitely an improvement" 
 	
 
-	var n_slices: usize = 100000000;
+	var n_slices: usize = 1000000000;
 
 	if (args.len > 1) {
 		n_slices = try std.fmt.parseInt(usize, args[1], 10);
@@ -24,6 +24,8 @@ pub fn main() !void {
 
 
 	try stdout.print("Estimating π using:\n  {d} slices.\n", .{n_slices});
+
+	const start = try std.time.Instant.now();
 
 	var s: f64 = 0.0;
 	var n_slices_f: f64 = @floatFromInt(n_slices); // Really?
@@ -39,7 +41,11 @@ pub fn main() !void {
 
 	const p: f64 = s * step;
 
-	try stdout.print("Estimated value of π: {d}", .{p});	
+	const finish = try std.time.Instant.now();
+	var elapsed: f64 = @floatFromInt(finish.since(start));
+	elapsed = elapsed/1000000000.0;
+	try stdout.print("Estimated value of π: {d}\n", .{p});	
+	try stdout.print("Elapsed time {d} seconds.\n", .{elapsed});	
 
 	try bw.flush(); // don't forget to flush!
 }
