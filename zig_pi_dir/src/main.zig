@@ -22,7 +22,6 @@ pub fn main() !void {
 		n_slices = try std.fmt.parseInt(usize, args[1], 10);
 	}
 
-
 	try stdout.print("Estimating π using:\n  {d} slices.\n", .{n_slices});
 
 	const start = try std.time.Instant.now();
@@ -30,7 +29,6 @@ pub fn main() !void {
 	var s: f64 = 0.0;
 	var n_slices_f: f64 = @floatFromInt(n_slices); // Really?
 	var step: f64 = 1.0 / n_slices_f;
-
 	var x: f64 = 0.0;
 
 	for (1..n_slices) |i| {
@@ -40,7 +38,6 @@ pub fn main() !void {
 	}
 
 	const p: f64 = s * step;
-
 	const finish = try std.time.Instant.now();
 	const elapsed: f64 = @floatFromInt(finish.since(start));
 
