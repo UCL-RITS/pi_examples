@@ -1,0 +1,7 @@
+KOTLINC = kotlinc
+
+pi.jar: pi-javatime.kt Makefile.javatime
+	$(KOTLINC) pi-javatime.kt -include-runtime -d pi.jar
+	
+clean:
+	rm -f pi.jar
