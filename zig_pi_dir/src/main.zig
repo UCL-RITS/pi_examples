@@ -42,10 +42,10 @@ pub fn main() !void {
 	const p: f64 = s * step;
 
 	const finish = try std.time.Instant.now();
-	var elapsed: f64 = @floatFromInt(finish.since(start));
-	elapsed = elapsed/1000000000.0;
+	const elapsed: f64 = @floatFromInt(finish.since(start));
+
 	try stdout.print("Estimated value of π: {d}\n", .{p});	
-	try stdout.print("Elapsed time {d} seconds.\n", .{elapsed});	
+	try stdout.print("Elapsed time {d} seconds.\n", .{elapsed/1000000000.0});	
 
 	try bw.flush(); // don't forget to flush!
 }
