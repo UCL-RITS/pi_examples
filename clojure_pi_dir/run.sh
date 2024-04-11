@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-PI_ARG=$1 make run
+clojure -M run.clj $1

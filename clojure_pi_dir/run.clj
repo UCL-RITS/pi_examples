@@ -9,7 +9,7 @@
   (def n(Integer/parseInt (first *command-line-args*)))
 )
 
-(import 'pi)
+(require 'pi)
 (println "Calculating PI using:")
 (println " " n "slices")
 (println "  1 processes")
