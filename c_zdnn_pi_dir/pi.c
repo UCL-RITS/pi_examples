@@ -7,10 +7,10 @@
 
 int main( int argc, char **argv ) {
    long i, total_steps;
-   int num_steps = 1;
-   int num_steps_ = 150;
-   int num_steps__ = 1000;
-   int num_steps___ = 1000;
+   int num_steps = 2;
+   int num_steps_ = 128;
+   int num_steps__ = 1024;
+   int num_steps___ = 1024;
    double step, x, sum, pi, taken, setup, teardown, computation;
    clock_t start, stop, setup_chkpt, teardown_chkpt;  
 
