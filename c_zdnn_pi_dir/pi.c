@@ -126,9 +126,9 @@ int main( int argc, char **argv ) {
    printf("Obtained value for PI: %.16g\n"
           "Time taken:            %.16g seconds\n", pi, taken);
    printf("Time breakdown: \n"
-          "Setup:                 %.16g seconds\n"
-          "Computation:           %.16g seconds\n"
-          "Teardown:              %.16g seconds\n", setup, computation, teardown);
+          "  Setup:               %.16g seconds\n"
+          "  Computation:         %.16g seconds\n"
+          "  Teardown:            %.16g seconds\n", setup, computation, teardown);
 
    return 0;
 }
