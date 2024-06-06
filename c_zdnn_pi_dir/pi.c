@@ -7,10 +7,10 @@
 
 int main( int argc, char **argv ) {
    long i, total_steps;
-   int num_steps = 10000;
-   int num_steps_ = 1;
-   int num_steps__ = 1;
-   int num_steps___ = 1;
+   int num_steps = 1;
+   int num_steps_ = 150;
+   int num_steps__ = 1000;
+   int num_steps___ = 1000;
    double step, x, sum, pi, taken;
    clock_t start, stop;  
 
@@ -42,8 +42,8 @@ int main( int argc, char **argv ) {
    total_steps = (long)num_steps * (long)num_steps_ * (long)num_steps__ * (long)num_steps___;
    
    printf("Calculating PI using:\n"
-          "  %ld slices\n"
-          "  1 process\n", total_steps);
+          "  %ld slices (%d x %d x %d x %d) \n"
+          "  1 process\n", total_steps, num_steps, num_steps_, int num_steps__, num_steps___);
    
    start = clock();
    
