@@ -83,12 +83,6 @@ int main( int argc, char **argv ) {
    status = zdnn_add(&one_t, &x_t, &x_t);
    status = zdnn_div(&one_t, &x_t, &sum_t);
 
-//   status = zdnn_mul(&step_t, &x_t, &x_t);
-//   status = zdnn_mul(&x_t, &x_t, &sum_t);
-
-
-   assert(status == ZDNN_OK);
-
    status = zdnn_transform_origtensor(&sum_t, sum_m);
 
    for (i=0;i<total_steps;i++){
