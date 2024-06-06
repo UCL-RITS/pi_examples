@@ -6,7 +6,11 @@
 #include "zdnn.h"
 
 int main( int argc, char **argv ) {
-   int i, num_steps = 10000;
+   long i, total_steps;
+   int num_steps = 10000;
+   int num_steps_ = 1;
+   int num_steps__ = 1;
+   int num_steps___ = 1;
    double step, x, sum, pi, taken;
    clock_t start, stop;  
 
@@ -25,24 +29,35 @@ int main( int argc, char **argv ) {
    if (argc > 1) {
       num_steps = atol(argv[1]);
    }
+   if (argc > 1) {
+      num_steps_ = atol(argv[1]);
+   }
+   if (argc > 1) {
+      num_steps__ = atol(argv[1]);
+   }
+   if (argc > 1) {
+      num_steps___ = atol(argv[1]);
+   }
+
+   total_steps = (long)num_steps * (long)num_steps_ * (long)num_steps__ * (long)num_steps___;
    
    printf("Calculating PI using:\n"
           "  %ld slices\n"
-          "  1 process\n", num_steps);
+          "  1 process\n", total_steps);
    
    start = clock();
    
-   void *range_m = malloc(num_steps * element_size);
-   void *x_m = malloc(num_steps * element_size);
-   void *sum_m = malloc(num_steps * element_size);
-   void *four_m = malloc(num_steps * element_size);
-   void *one_m = malloc(num_steps * element_size);
-   void *step_m = malloc(num_steps * element_size);
+   void *range_m = malloc(total_steps * element_size);
+   void *x_m = malloc(total_steps * element_size);
+   void *sum_m = malloc(total_steps * element_size);
+   void *four_m = malloc(total_steps * element_size);
+   void *one_m = malloc(total_steps * element_size);
+   void *step_m = malloc(total_steps * element_size);
 
    sum = 0.0;
-   step = 1.0 / num_steps;
+   step = 1.0 / total_steps;
 
-   for (i=0;i<num_steps;i++) {
+   for (i=0;i<total_steps;i++) {
      ((float *)range_m)[i] = (float)(i + 0.5);
      ((float *)x_m)[i] = (float)(i + 0.5);
      ((float *)four_m)[i] = (float)(4.0);
@@ -51,7 +66,7 @@ int main( int argc, char **argv ) {
 
    }
 
-   zdnn_init_pre_transformed_desc(ZDNN_NHWC, type, &pre_tfrmd_desc, num_steps, 1, 1, 1);
+   zdnn_init_pre_transformed_desc(ZDNN_NHWC, type, &pre_tfrmd_desc, num_steps, num_steps_, num_steps__, num_steps___);
 
    status = zdnn_generate_transformed_desc(&pre_tfrmd_desc, &tfrmd_desc);
 
@@ -78,7 +93,7 @@ int main( int argc, char **argv ) {
 
    status = zdnn_transform_origtensor(&sum_t, sum_m);
 
-   for (i=0;i<num_steps;i++){
+   for (i=0;i<total_steps;i++){
      sum = sum + ((float *)sum_m)[i];
    }
 
