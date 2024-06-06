@@ -121,14 +121,14 @@ int main( int argc, char **argv ) {
    taken = ((double)(stop - start))/CLOCKS_PER_SEC;
    setup = ((double)(setup_chkpt - start))/CLOCKS_PER_SEC;
    computation = ((double)(teardown_chkpt - setup_chkpt))/CLOCKS_PER_SEC;
-   takedown = ((double)(stop - teardown_chkpt))/CLOCKS_PER_SEC;
+   teardown = ((double)(stop - teardown_chkpt))/CLOCKS_PER_SEC;
 
    printf("Obtained value for PI: %.16g\n"
           "Time taken:            %.16g seconds\n", pi, taken);
    printf("Time breakdown: \n"
           "Setup:                 %.16g seconds\n"
           "Computation:           %.16g seconds\n"
-          "Teardown:              %.16g seconds\n", setup, computation, takedown);
+          "Teardown:              %.16g seconds\n", setup, computation, teardown);
 
    return 0;
 }
