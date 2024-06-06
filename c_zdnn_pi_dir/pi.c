@@ -81,11 +81,15 @@ int main( int argc, char **argv ) {
 
    setup_chkpt = clock();
 
-   status = zdnn_mul(&step_t, &x_t, &x_t);
-   status = zdnn_mul(&x_t, &x_t, &x_t);
+//   status = zdnn_mul(&step_t, &x_t, &x_t);
+//   status = zdnn_mul(&x_t, &x_t, &x_t);
 
-   status = zdnn_add(&one_t, &x_t, &x_t);
-   status = zdnn_div(&four_t, &x_t, &sum_t);
+//   status = zdnn_add(&one_t, &x_t, &x_t);
+//   status = zdnn_div(&four_t, &x_t, &sum_t);
+
+   status = zdnn_mul(&step_t, &x_t, &x_t);
+   status = zdnn_mul(&x_t, &x_t, &sum_t);
+
 
    assert(status == ZDNN_OK);
 
@@ -95,7 +99,7 @@ int main( int argc, char **argv ) {
      sum = sum + ((float *)sum_m)[i];
    }
 
-   pi = sum * step;
+   pi = ((4.0 * total_steps) /(total_steps + sum)) * step;
 
    teardown_chkpt = clock();
 
