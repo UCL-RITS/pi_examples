@@ -29,14 +29,14 @@ int main( int argc, char **argv ) {
    if (argc > 1) {
       num_steps = atol(argv[1]);
    }
-   if (argc > 1) {
-      num_steps_ = atol(argv[1]);
+   if (argc > 2) {
+      num_steps_ = atol(argv[2]);
    }
-   if (argc > 1) {
-      num_steps__ = atol(argv[1]);
+   if (argc > 3) {
+      num_steps__ = atol(argv[3]);
    }
-   if (argc > 1) {
-      num_steps___ = atol(argv[1]);
+   if (argc > 4) {
+      num_steps___ = atol(argv[4]);
    }
 
    total_steps = (long)num_steps * (long)num_steps_ * (long)num_steps__ * (long)num_steps___;
