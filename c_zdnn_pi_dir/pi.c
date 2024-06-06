@@ -11,8 +11,8 @@ int main( int argc, char **argv ) {
    int num_steps_ = 150;
    int num_steps__ = 1000;
    int num_steps___ = 1000;
-   double step, x, sum, pi, taken;
-   clock_t start, stop;  
+   double step, x, sum, pi, taken, setup, teardown, computation;
+   clock_t start, stop, setup_chkpt, teardown_chkpt;  
 
    zdnn_tensor_desc pre_tfrmd_desc, tfrmd_desc;
 
@@ -83,6 +83,8 @@ int main( int argc, char **argv ) {
    status = zdnn_transform_ztensor(&four_t, four_m);
    status = zdnn_transform_ztensor(&step_t, step_m);
 
+   setup_chkpt = clock();
+
    status = zdnn_mul(&step_t, &range_t, &x_t);
    status = zdnn_mul(&x_t, &x_t, &x_t);
 
@@ -98,6 +100,8 @@ int main( int argc, char **argv ) {
    }
 
    pi = sum * step;
+
+   teardown_chkpt = clock();
 
    status = zdnn_free_ztensor_buffer(&range_t);
    status = zdnn_free_ztensor_buffer(&x_t);
@@ -115,9 +119,16 @@ int main( int argc, char **argv ) {
 
    stop = clock();
    taken = ((double)(stop - start))/CLOCKS_PER_SEC;
+   setup = ((double)(setup_chkpt - start))/CLOCKS_PER_SEC;
+   computation = ((double)(teardown_chkpt - setup_chkpt))/CLOCKS_PER_SEC;
+   takedown = ((double)(stop - teardown_chkpt))/CLOCKS_PER_SEC;
 
    printf("Obtained value for PI: %.16g\n"
           "Time taken:            %.16g seconds\n", pi, taken);
+   printf("Time breakdown: \n"
+          "Setup:                 %.16g seconds\n"
+          "Computation:           %.16g seconds\n"
+          "Teardown:              %.16g seconds\n", setup, computation, takedown);
 
    return 0;
 }
