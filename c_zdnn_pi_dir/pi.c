@@ -16,7 +16,7 @@ int main( int argc, char **argv ) {
 
    zdnn_tensor_desc pre_tfrmd_desc, tfrmd_desc;
 
-   zdnn_ztensor range_t, x_t, sum_t, four_t, one_t, step_t;
+   zdnn_ztensor x_t, sum_t, four_t, one_t, step_t;
    zdnn_status status;
 
    zdnn_data_types type = FP32;
@@ -47,7 +47,6 @@ int main( int argc, char **argv ) {
    
    start = clock();
    
-   void *range_m = malloc(total_steps * element_size);
    void *x_m = malloc(total_steps * element_size);
    void *sum_m = malloc(total_steps * element_size);
    void *four_m = malloc(total_steps * element_size);
@@ -58,7 +57,6 @@ int main( int argc, char **argv ) {
    step = 1.0 / total_steps;
 
    for (i=0;i<total_steps;i++) {
-     ((float *)range_m)[i] = (float)(i + 0.5);
      ((float *)x_m)[i] = (float)(i + 0.5);
      ((float *)four_m)[i] = (float)(4.0);
      ((float *)one_m)[i] = (float)(1.0);
@@ -70,14 +68,12 @@ int main( int argc, char **argv ) {
 
    status = zdnn_generate_transformed_desc(&pre_tfrmd_desc, &tfrmd_desc);
 
-   status = zdnn_init_ztensor_with_malloc(&pre_tfrmd_desc, &tfrmd_desc, &range_t);
    status = zdnn_init_ztensor_with_malloc(&pre_tfrmd_desc, &tfrmd_desc, &x_t);
    status = zdnn_init_ztensor_with_malloc(&pre_tfrmd_desc, &tfrmd_desc, &sum_t); 
    status = zdnn_init_ztensor_with_malloc(&pre_tfrmd_desc, &tfrmd_desc, &four_t);
    status = zdnn_init_ztensor_with_malloc(&pre_tfrmd_desc, &tfrmd_desc, &one_t);
    status = zdnn_init_ztensor_with_malloc(&pre_tfrmd_desc, &tfrmd_desc, &step_t); 
 
-   status = zdnn_transform_ztensor(&range_t, range_m);
    status = zdnn_transform_ztensor(&x_t, x_m);
    status = zdnn_transform_ztensor(&one_t, one_m);
    status = zdnn_transform_ztensor(&four_t, four_m);
@@ -85,11 +81,11 @@ int main( int argc, char **argv ) {
 
    setup_chkpt = clock();
 
-   status = zdnn_mul(&step_t, &range_t, &x_t);
+   status = zdnn_mul(&step_t, &x_t, &x_t);
    status = zdnn_mul(&x_t, &x_t, &x_t);
 
-   status = zdnn_add(&one_t, &x_t, &range_t);
-   status = zdnn_div(&four_t, &range_t, &sum_t);
+   status = zdnn_add(&one_t, &x_t, &x_t);
+   status = zdnn_div(&four_t, &x_t, &sum_t);
 
    assert(status == ZDNN_OK);
 
@@ -103,14 +99,12 @@ int main( int argc, char **argv ) {
 
    teardown_chkpt = clock();
 
-   status = zdnn_free_ztensor_buffer(&range_t);
    status = zdnn_free_ztensor_buffer(&x_t);
    status = zdnn_free_ztensor_buffer(&sum_t);
    status = zdnn_free_ztensor_buffer(&one_t);
    status = zdnn_free_ztensor_buffer(&four_t);
    status = zdnn_free_ztensor_buffer(&step_t);
 
-   free(range_m);
    free(x_m);
    free(sum_m);
    free(one_m);
