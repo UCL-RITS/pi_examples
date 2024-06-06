@@ -43,7 +43,7 @@ int main( int argc, char **argv ) {
    
    printf("Calculating PI using:\n"
           "  %ld slices (%d x %d x %d x %d) \n"
-          "  1 process\n", total_steps, num_steps, num_steps_, int num_steps__, num_steps___);
+          "  1 process\n", total_steps, num_steps, num_steps_, num_steps__, num_steps___);
    
    start = clock();
    
