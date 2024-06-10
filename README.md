@@ -8,31 +8,28 @@ The others are mostly just the result of learning a new thing, wanting to do som
 
 ## Maths
 
-They calculate pi using a numerical integration of                                
+They calculate pi using a numerical integration of
 
+```math
+y = \frac{1}{1 + x^2}
 ```
-           1                                                                   
-   y = ---------                                                               
-        1 + x²                                                                
-```                                                                             
 
-The indefinite integral of `(1 + x²)⁻¹` wrt x is tan⁻¹ x (+ constant)           
+The indefinite integral of $(1 + x^2)^{-1}$ wrt $x$ is $\tan^{-1}(x)$ (+ constant)
 
 OIOW:
 
-```latex
-\int\frac{1}{1+x^2}\mathrm{d} x = \tan^{-1} x + c                             
-```        
-                                                                        
-Evaluating that integral between x = 0 and x = 1 gives us π/4                
+```math
+\int\frac{1}{1+x^2}\mathrm{d} x = \tan^{-1} x + c
+```
 
-```latex
+Evaluating that integral between $x = 0$ and $x = 1$ gives us $\pi/4$
+
+```math
  \int^{1}_0\frac{1}{1+x^2}\mathrm{d} x = \frac{\pi}{4}                         
 ```        
-                                                                        
- So if we add the area of sufficiently many y-high rectangles between 0 and 1  
-  for y = (1+x²)⁻¹ , and multiply by 4, we should get a decent approximation for π.
-                      
+
+So if we add the area of sufficiently many y-high rectangles between $0$ and $1$ for $y = (1+x^2)^{-1}$, and multiply by $4$, we should get a decent approximation for $\pi$.
+
 ## Running
 
 So that we can automatically test these, each directory should have a `run.sh` that builds and runs the example. Please use `make` unless you really can't (just to minimise additional dependencies).
