@@ -7,7 +7,7 @@ int main( int argc, char **argv ) {
   double step, x, sum, total_sum, pi, start, stop, min_start, max_stop;
   int this_proc, num_procs, remainder;
   long int my_slice[2];
-  int i;
+  long int i;
 
   MPI_Init(&argc,&argv);
   MPI_Comm_size(MPI_COMM_WORLD,&num_procs);
