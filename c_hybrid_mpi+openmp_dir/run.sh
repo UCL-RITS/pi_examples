@@ -2,4 +2,4 @@
 
 make clean
 make
-mpirun ./hybrid_pi
+mpirun ./hybrid_pi "${@}"
