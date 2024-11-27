@@ -3,11 +3,15 @@
 #include <math.h>
 
 int main( int argc, char **argv ) {
-  const long int num_steps = 1000000000;
+  long int num_steps = 1000000000;
   double step, x, sum, total_sum, pi, start, stop, min_start, max_stop;
   int this_proc, num_procs, remainder;
   long int my_slice[2];
   long int i;
+
+  if (argc > 1) {
+    num_steps = atol(argv[1]);
+  }
 
   MPI_Init(&argc,&argv);
   MPI_Comm_size(MPI_COMM_WORLD,&num_procs);
